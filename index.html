@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trixamid | Smart ERP for Education</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --primary-light: #e0e7ff;
+      --secondary: #10b981;
+      --dark: #111827;
+      --light: #f9fafb;
+      --gray: #6b7280;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: #374151;
+    }
+    
+    /* Navigation */
+    .navbar {
+      padding: 20px 0;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar.scrolled {
+      padding: 10px 0;
+      background-color: white !important;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      margin: 0 10px;
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: white;
+      padding: 140px 0 120px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+      opacity: 0.4;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .display-3 {
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      max-width: 700px;
+    }
+    
+    /* Buttons */
+    .btn {
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    }
+    
+    .btn-outline-light {
+      border-width: 2px;
+    }
+    
+    .btn-outline-light:hover {
+      background-color: rgba(255,255,255,0.1);
+    }
+    
+    /* Sections */
+    .section {
+      padding: 100px 0;
+    }
+    
+    .section-title {
+      font-weight: 800;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto 4rem;
+    }
+    
+    /* Cards */
+    .card {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      height: 100%;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    }
+    
+    .card-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-title {
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+    
+    /* Features Grid */
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background-color: var(--primary-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .feature-icon i {
+      font-size: 1.75rem;
+      color: var(--primary);
+    }
+    
+    /* Testimonials */
+    .testimonial-card {
+      border-left: 4px solid var(--primary);
+    }
+    
+    .testimonial-author img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    
+    /* Clients */
+    .client-logo {
+      height: 40px;
+      filter: grayscale(100%);
+      opacity: 0.6;
+      transition: all 0.3s ease;
+    }
+    
+    .client-logo:hover {
+      filter: grayscale(0);
+      opacity: 1;
+    }
+    
+    /* Solutions */
+    .solution-card {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      min-height: 300px;
+    }
+    
+    .solution-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+    }
+    
+    .solution-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+    }
+    
+    /* About */
+    .about-img {
+      border-radius: 12px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    }
+    
+    /* Team */
+    .team-member {
+      text-align: center;
+    }
+    
+    .team-member img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 1.5rem;
+      border: 5px solid white;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    }
+    
+    /* Contact */
+    .contact-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .contact-info i {
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary-light);
+      color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 80px 0 30px;
+    }
+    
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+    }
+    
+    .footer-links h5 {
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .footer-links h5::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+    
+    .footer-links a {
+      color: #9ca3af;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+    
+    .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.1); /* Works on light backgrounds */
+    color: #333; /* Dark icons by default (visible on white) */
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+    .social-links a:hover {
+        background-color: var(--primary); /* Your brand color */
+        color: white !important; /* Force white on hover */
+        transform: translateY(-3px);
+    }
+
+    .social-links--footer a {
+        background-color: rgba(255, 255, 255, 0.15); /* Light overlay on dark */
+        color: white !important; /* White icons in footer */
+    }
+
+    .social-links--footer a:hover {
+        background-color: var(--primary); /* Brand color on hover */
+        /* (No need to change color, already white) */
+    }
+
+    /* Remove margin on last icon */
+    .social-links a:last-child {
+        margin-right: 0;
+    }
+
+    /* Slightly enlarge icons */
+    .social-links a i {
+        font-size: 1.1em;
+    }
+
+    /* Optional: Add a soft glow on hover */
+    .social-links a:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      margin-top: 50px;
+      color: #9ca3af;
+    }
+    
+    /* Animations */
+    [data-aos] {
+      transition: all 0.8s ease;
+    }
+    
+    .aos-fade {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .aos-fade.aos-animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .aos-zoom {
+      transform: scale(0.95);
+    }
+    
+    .aos-zoom.aos-animate {
+      transform: scale(1);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .display-3 {
+        font-size: 2.75rem;
+      }
+      
+      .section {
+        padding: 80px 0;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        padding: 120px 0 80px;
+      }
+      
+      .display-3 {
+        font-size: 2.25rem;
+      }
+      
+      .section {
+        padding: 60px 0;
+      }
+    }
+
+    /* Feature Tabs */
+.nav-pills .nav-link {
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin: 0 8px;
+  font-weight: 500;
+  color: var(--dark);
+  background-color: rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.nav-pills .nav-link.active {
+  background-color: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+/* Feature Cards */
+.feature-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  height: 100%;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.feature-icon-bg {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.feature-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Solution Cards Extended */
+.solution-card-extended {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  height: 100%;
+  background: white;
+}
+
+.solution-img {
+  min-height: 250px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.solution-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: var(--primary);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.solution-content-extended {
+  padding: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.solution-features {
+  margin: 20px 0;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.feature-item i {
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+/* Highlight Cards */
+.highlight-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  height: 100%;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.highlight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.highlight-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.highlight-badge {
+  display: inline-block;
+  background-color: rgba(79, 70, 229, 0.1);
+  color: var(--primary);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+/* Color Utilities */
+.bg-primary-light {
+  background-color: rgba(79, 70, 229, 0.1);
+}
+
+.bg-success-light {
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+.bg-info-light {
+  background-color: rgba(6, 182, 212, 0.1);
+}
+
+.bg-warning-light {
+  background-color: rgba(245, 158, 11, 0.1);
+}
+
+.bg-danger-light {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.bg-purple-light {
+  background-color: rgba(139, 92, 246, 0.1);
+}
+
+.text-purple {
+  color: #8b5cf6;
+}
+
+.bg-gradient-light {
+  background: linear-gradient(to bottom, #f9fafb, #f3f4f6);
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Trixamid</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#features">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#solutions">Solutions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+        <a href="#" class="btn btn-primary ms-lg-3">Request Demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="hero-content">
+            <h1 class="display-3 fw-bold animate__animated animate__fadeInDown">Transforming Education with Agentic AI</h1>
+            <p class="hero-subtitle animate__animated animate__fadeIn animate__delay-1s">“A next-generation agentic AI-driven ERP platform tailored for the education sector, combining modular flexibility, real-time intelligence, and intuitive user experience to empower institutions, educators, and students.”
+
+</p>
+            <div class="d-flex gap-3 animate__animated animate__fadeInUp animate__delay-2s">
+              <a href="#" class="btn btn-primary btn-lg">Request Demo</a>
+              <a href="#" class="btn btn-outline-light btn-lg">Explore Features</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block">
+          <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" class="img-fluid rounded-3 shadow-lg" alt="Education Technology">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Key Differentiators Section -->
+  <section class="section bg-white" id="about">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="section-title">Our Key Differentiators</h2>
+          <p class="section-subtitle">What makes Trixamid the smart choice for modern educational institutions</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="feature-icon">
+                <i class="fas fa-robot"></i>
+              </div>
+              <h5 class="card-title">Agentic AI Integration</h5>
+              <p class="card-text">Unlike traditional ERPs, Trixamid leverages agentic AI to automate administrative workflows, personalize learning experiences, and assist decision-making for school management.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="feature-icon">
+                <i class="fas fa-school"></i>
+              </div>
+              <h5 class="card-title">Vertical Specialization</h5>
+              <p class="card-text">Designed specifically for K-12 schools and educational institutions, Trixamid aligns with academic cycles, assessment standards, and communication needs of schools.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="feature-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h5 class="card-title">Role-Based Experience</h5>
+              <p class="card-text">Provides differentiated interfaces and workflows for students, teachers, admins, and parents, each with customized data and actionable insights.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="feature-icon">
+                <i class="fas fa-bell"></i>
+              </div>
+              <h5 class="card-title">Smart Automation & Alerts</h5>
+              <p class="card-text">Offers smart nudges, notifications, and anomaly detection (e.g., attendance drops, learning gaps, fee dues), making it proactive rather than just reactive.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="feature-icon">
+                <i class="fas fa-puzzle-piece"></i>
+              </div>
+              <h5 class="card-title">Modular & Scalable</h5>
+              <p class="card-text">Institutions can start with core modules and scale up to advanced AI modules (e.g., performance prediction, skill mapping, resource optimization).</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="feature-icon">
+                <i class="fas fa-lock"></i>
+              </div>
+              <h5 class="card-title">Data Ownership & Privacy</h5>
+              <p class="card-text">Ensures secure data handling and transparency, addressing key concerns of schools regarding data leakage and platform lock-in.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" class="img-fluid about-img" alt="Our Team">
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <h2 class="section-title text-start">About Trixamid</h2>
+          <p class="lead">Trixamid is more than just software — it's a leap toward smarter institutions. Designed to simplify complexity, our platform uses agentic AI to empower educators, administrators, students, and parents with actionable intelligence and automation.</p>
+          
+          <div class="mb-4">
+            <h5>Our Vision</h5>
+            <p>“To become the world’s most adaptive and intelligent ERP platform—empowering institutions and organizations of all sizes to automate operations, unlock insights, and create impact through agentic AI.”</p>
+          </div>
+          
+          <div class="mb-4">
+            <h5>Our Story</h5>
+            <p>Trixamid was born from a desire to bridge the gap between traditional education systems and the power of modern technology. With deep roots in AI, firmware, and EdTech, we set out to build a platform that doesn't just store information — it learns from it.
+            <br>  Today, Trixamid enables institutions to do more with less by providing tools that are not only reactive, but proactive.</p>
+          </div>
+          
+          <a href="#" class="btn btn-outline-primary">Learn More About Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+<section class="section bg-white" id="features">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 text-center">
+        <h2 class="section-title">Powerful Features for Every School Need</h2>
+        <p class="section-subtitle">Comprehensive modules powered by Agentic AI to transform educational management</p>
+      </div>
+    </div>
+
+    <!-- Feature Tabs -->
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <ul class="nav nav-pills justify-content-center mb-5" id="feature-tabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="admin-tab" data-bs-toggle="pill" data-bs-target="#admin-features" type="button" role="tab">
+              <i class="fas fa-user-tie me-2"></i> Admin Features
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="teacher-tab" data-bs-toggle="pill" data-bs-target="#teacher-features" type="button" role="tab">
+              <i class="fas fa-chalkboard-teacher me-2"></i> Teacher Features
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="student-tab" data-bs-toggle="pill" data-bs-target="#student-features" type="button" role="tab">
+              <i class="fas fa-user-graduate me-2"></i> Student Features
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="parent-tab" data-bs-toggle="pill" data-bs-target="#parent-features" type="button" role="tab">
+              <i class="fas fa-users me-2"></i> Parent Features
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="feature-tabs-content">
+          <!-- Admin Features -->
+          <div class="tab-pane fade show active" id="admin-features" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-primary-light">
+                    <i class="fas fa-tachometer-alt text-primary"></i>
+                  </div>
+                  <h4>Central Dashboard</h4>
+                  <p>Real-time statistics on attendance, fees, academics with customizable widgets.</p>
+                  <div class="feature-badge">AI-Powered</div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-success-light">
+                    <i class="fas fa-database text-success"></i>
+                  </div>
+                  <h4>Student/Staff Database</h4>
+                  <p>Comprehensive management with bulk import/export and advanced filtering.</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-info-light">
+                    <i class="fas fa-calendar-alt text-info"></i>
+                  </div>
+                  <h4>Timetable Scheduling</h4>
+                  <p>Drag-and-drop interface with conflict detection and resource allocation.</p>
+                  <div class="feature-badge">Smart Automation</div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-warning-light">
+                    <i class="fas fa-money-bill-wave text-warning"></i>
+                  </div>
+                  <h4>Fee Automation</h4>
+                  <p>Automated invoicing, payment tracking, and reconciliation with multiple gateways.</p>
+                  <div class="feature-badge">AI-Powered</div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-danger-light">
+                    <i class="fas fa-clipboard-check text-danger"></i>
+                  </div>
+                  <h4>Exam Control Center</h4>
+                  <p>Setup exams, generate admit cards, and control report card parameters.</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-purple-light">
+                    <i class="fas fa-user-shield text-purple"></i>
+                  </div>
+                  <h4>Role Permissions</h4>
+                  <p>Granular access control with custom roles and permission sets.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Teacher Features -->
+          <div class="tab-pane fade" id="teacher-features" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-primary-light">
+                    <i class="fas fa-chalkboard text-primary"></i>
+                  </div>
+                  <h4>Personal Dashboard</h4>
+                  <p>Customized view of classes, schedules, tasks, and important notices.</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-success-light">
+                    <i class="fas fa-fingerprint text-success"></i>
+                  </div>
+                  <h4>Smart Attendance</h4>
+                  <p>Multiple verification methods with facial recognition and anomaly alerts.</p>
+                  <div class="feature-badge">AI-Powered</div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-info-light">
+                    <i class="fas fa-tasks text-info"></i>
+                  </div>
+                  <h4>Lesson Planning</h4>
+                  <p>Create, track, and share lesson plans with curriculum alignment tools.</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-warning-light">
+                    <i class="fas fa-edit text-warning"></i>
+                  </div>
+                  <h4>Assignment Manager</h4>
+                  <p>Create, distribute, and grade assignments with plagiarism checks.</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-danger-light">
+                    <i class="fas fa-chart-line text-danger"></i>
+                  </div>
+                  <h4>Performance Analytics</h4>
+                  <p>Visualize student progress and identify at-risk students early.</p>
+                  <div class="feature-badge">AI Insights</div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-purple-light">
+                    <i class="fas fa-comments text-purple"></i>
+                  </div>
+                  <h4>Integrated Messaging</h4>
+                  <p>Secure communication with students, parents, and colleagues.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Student Features -->
+          <div class="tab-pane fade" id="student-features" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-primary-light">
+                    <i class="fas fa-home text-primary"></i>
+                  </div>
+                  <h4>Personal Dashboard</h4>
+                  <p>Customized view of timetable, homework, announcements, and upcoming tests.</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-success-light">
+                    <i class="fas fa-calendar-check text-success"></i>
+                  </div>
+                  <h4>Attendance History</h4>
+                  <p>View attendance records with reasons and teacher comments.</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-info-light">
+                    <i class="fas fa-book text-info"></i>
+                  </div>
+                  <h4>Homework Portal</h4>
+                  <p>Submit assignments online with deadline reminders and feedback tracking.</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-warning-light">
+                    <i class="fas fa-chart-pie text-warning"></i>
+                  </div>
+                  <h4>Grade Analytics</h4>
+                  <p>Visualize performance trends across subjects and assessment types.</p>
+                  <div class="feature-badge">AI Insights</div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-danger-light">
+                    <i class="fas fa-comment-alt text-danger"></i>
+                  </div>
+                  <h4>Direct Messaging</h4>
+                  <p>Secure communication with teachers for questions and support.</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-purple-light">
+                    <i class="fas fa-mobile-alt text-purple"></i>
+                  </div>
+                  <h4>Mobile Access</h4>
+                  <p>Full functionality on smartphones with offline capabilities.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Parent Features -->
+          <div class="tab-pane fade" id="parent-features" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-primary-light">
+                    <i class="fas fa-child text-primary"></i>
+                  </div>
+                  <h4>Child Overview</h4>
+                  <p>Single dashboard for all academic and administrative information.</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-success-light">
+                    <i class="fas fa-bell text-success"></i>
+                  </div>
+                  <h4>Real-Time Alerts</h4>
+                  <p>Instant notifications for attendance, grades, and important notices.</p>
+                  <div class="feature-badge">AI-Powered</div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-info-light">
+                    <i class="fas fa-book-open text-info"></i>
+                  </div>
+                  <h4>Homework Tracker</h4>
+                  <p>Monitor assignments, due dates, and completion status.</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-warning-light">
+                    <i class="fas fa-chart-bar text-warning"></i>
+                  </div>
+                  <h4>Performance Reports</h4>
+                  <p>Detailed analytics with historical comparisons and benchmarks.</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-danger-light">
+                    <i class="fas fa-comments text-danger"></i>
+                  </div>
+                  <h4>Teacher Communication</h4>
+                  <p>Direct messaging with teachers and school administration.</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card h-100">
+                  <div class="feature-icon-bg bg-purple-light">
+                    <i class="fas fa-users text-purple"></i>
+                  </div>
+                  <h4>Multi-Child Support</h4>
+                  <p>Manage all children from a single parent account.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <section class="section bg-gradient-light" id="solutions">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <h2 class="section-title">Tailored Solutions for Every Role</h2>
+          <p class="section-subtitle">Trixamid provides specialized interfaces and tools optimized for each user's needs</p>
+        </div>
+      </div>
+
+      <div class="row g-4 mt-5">
+        <!-- School Admin Solution -->
+        <div class="col-lg-6" data-aos="fade-up">
+          <div class="solution-card-extended h-100">
+            <div class="row g-0 h-100">
+              <div class="col-md-5 solution-img h-100" style="background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80')">
+                <div class="solution-badge">
+                  <i class="fas fa-user-tie me-2"></i> For Administrators
+                </div>
+              </div>
+              <div class="col-md-7 d-flex flex-column">
+                <div class="solution-content-extended flex-grow-1">
+                  <h3>Education Management Suite</h3>
+                  <p>Comprehensive tools for administrators to efficiently manage all aspects of insitute operations.</p>
+                  
+                  <div class="solution-features">
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>Centralized dashboard with real-time analytics</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>Automated fee collection and financial reporting</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>Staff management and payroll integration</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>AI-powered alerts for operational issues</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>Customizable reporting and data exports</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-3">
+                  <a href="#" class="btn btn-primary">Explore Admin Features</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Teacher Solution -->
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="solution-card-extended h-100">
+            <div class="row g-0 h-100">
+              <div class="col-md-5 solution-img h-100" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1422&q=80')">
+                <div class="solution-badge">
+                  <i class="fas fa-chalkboard-teacher me-2"></i> For Teachers
+                </div>
+              </div>
+              <div class="col-md-7 d-flex flex-column">
+                <div class="solution-content-extended flex-grow-1">
+                  <h3>Teaching Excellence Toolkit</h3>
+                  <p>Powerful tools designed to enhance teaching effectiveness and reduce administrative burden.</p>
+                  
+                  <div class="solution-features">
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>Smart attendance with facial recognition</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>Automated grading and performance analytics</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>Lesson planning with curriculum mapping</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>AI-powered student progress insights</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>Parent communication portal</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-3">
+                  <a href="#" class="btn btn-primary">Explore Teacher Features</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student Solution -->
+        <div class="col-lg-6" data-aos="fade-up">
+          <div class="solution-card-extended h-100">
+            <div class="row g-0 h-100">
+              <div class="col-md-5 solution-img h-100" style="background-image: url('https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80')">
+                <div class="solution-badge">
+                  <i class="fas fa-user-graduate me-2"></i> For Students
+                </div>
+              </div>
+              <div class="col-md-7 d-flex flex-column">
+                <div class="solution-content-extended flex-grow-1">
+                  <h3>Student Success Platform</h3>
+                  <p>Engaging interface that helps students stay organized and take ownership of their learning.</p>
+                  
+                  <div class="solution-features">
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>Personalized learning dashboard</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>Homework and assignment submission portal</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>Grade tracking with performance trends</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>AI-powered study recommendations</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>School event and exam calendar</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-3">
+                  <a href="#" class="btn btn-primary">Explore Student Features</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Parent Solution -->
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="solution-card-extended h-100">
+            <div class="row g-0 h-100">
+              <div class="col-md-5 solution-img h-100" style="background-image: url('https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80')">
+                <div class="solution-badge">
+                  <i class="fas fa-users me-2"></i> For Parents
+                </div>
+              </div>
+              <div class="col-md-7 d-flex flex-column">
+                <div class="solution-content-extended flex-grow-1">
+                  <h3>Parent Engagement Portal</h3>
+                  <p>Stay connected and informed about your child's education journey.</p>
+                  
+                  <div class="solution-features">
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>Real-time attendance and grade alerts</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>Fee payment and receipt tracking</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>Direct messaging with teachers</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>AI-powered performance insights</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-check-circle text-primary"></i>
+                      <span>Multi-child support in single account</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-3">
+                  <a href="#" class="btn btn-primary">Explore Parent Features</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Highlights Section -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <h2 class="section-title">Key Feature Highlights</h2>
+          <p class="section-subtitle">Discover how Trixamid's Agentic AI transforms school operations</p>
+        </div>
+      </div>
+
+      <div class="row mt-5 g-4">
+        <!-- AI Insights -->
+        <div class="col-md-6 col-lg-3" data-aos="fade-up">
+          <div class="highlight-card">
+            <div class="highlight-icon bg-primary-light">
+              <i class="fas fa-brain text-primary"></i>
+            </div>
+            <h4>AI-Powered Insights</h4>
+            <p>Automated analysis of student performance, attendance patterns, and operational metrics with actionable recommendations.</p>
+            <div class="highlight-badge">Agentic AI</div>
+          </div>
+        </div>
+        
+        <!-- Smart Automation -->
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="highlight-card">
+            <div class="highlight-icon bg-success-light">
+              <i class="fas fa-robot text-success"></i>
+            </div>
+            <h4>Smart Automation</h4>
+            <p>Automate routine tasks like attendance marking, fee reminders, and report generation to save countless hours.</p>
+            <div class="highlight-badge">Time Saver</div>
+          </div>
+        </div>
+        
+        <!-- Data Security -->
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="highlight-card">
+            <div class="highlight-icon bg-warning-light">
+              <i class="fas fa-shield-alt text-warning"></i>
+            </div>
+            <h4>Enterprise Security</h4>
+            <p>Bank-grade encryption, role-based access control, and comprehensive audit trails to protect sensitive data.</p>
+            <div class="highlight-badge">E2E Encryption</div>
+          </div>
+        </div>
+        
+        <!-- Mobile Access -->
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="highlight-card">
+            <div class="highlight-icon bg-info-light">
+              <i class="fas fa-mobile-alt text-info"></i>
+            </div>
+            <h4>Anywhere Access</h4>
+            <p>Fully responsive design with dedicated mobile apps for iOS and Android to stay connected on-the-go.</p>
+            <div class="highlight-badge">Universal Access</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-5 bg-primary text-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h3 class="mb-3">Ready to transform your school with intelligent ERP?</h3>
+          <p class="mb-lg-0">Join hundreds of educational institutions already benefiting from Trixamid's agentic AI platform.</p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <a href="#" class="btn btn-light btn-lg">Request a Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section bg-white" id="contact">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="section-title">Contact Us</h2>
+          <p class="section-subtitle">Get in touch to learn more about how Trixamid can help your institution</p>
+        </div>
+      </div>
+      
+      <div class="row mt-5 g-4">
+        <div class="col-lg-5" data-aos="fade-right">
+          <h4 class="mb-4">Let's talk about how we can help</h4>
+          <p>Whether you're looking for a demo, have questions about our platform, or want to discuss pricing, our team is here to help.</p>
+          
+          <div class="mt-5">
+          <!--<div class="contact-info">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h6>Our Office</h6>
+                <p class="mb-0">123 Education St, Tech City, TC 12345</p>
+              </div>
+            </div> -->
+            
+            <div class="contact-info">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h6>Email Us</h6>
+                <p class="mb-0">hello@trixamid.com</p>
+              </div>
+            </div>
+            
+            <!-- <div class="contact-info">
+              <i class="fas fa-phone-alt"></i>
+              <div>
+                <h6>Call Us</h6>
+                <p class="mb-0">+1 (555) 123-4567</p>
+              </div>
+            </div> -->
+          </div>
+          
+          <div class="mt-5">
+            <h6>Follow Us</h6>
+            <div class="social-links mt-3">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-7" data-aos="fade-left">
+          <div class="card shadow-sm">
+            <div class="card-body p-5">
+              <form>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="school" class="form-label">School/Institution</label>
+                    <input type="text" class="form-control" id="school">
+                  </div>
+                  <div class="col-12">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" class="form-control" id="subject">
+                  </div>
+                  <div class="col-12">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" rows="4" required></textarea>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <a href="#" class="footer-logo">Trixamid</a>
+          <p>The smart ERP platform built for modern educational institutions. Empowering schools with agentic AI to transform education.</p>
+          <div class="social-links social-links--footer mt-3">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+
+        </div>
+        
+        <div class="col-lg-2 col-md-4">
+          <div class="footer-links">
+            <h5>Product</h5>
+            <ul>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Solutions</a></li>
+              <li><a href="#">Pricing</a></li>
+              <li><a href="#">Demo</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-4">
+          <div class="footer-links">
+            <h5>Company</h5>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-4">
+          <div class="footer-links">
+            <h5>Support</h5>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Community</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-4">
+          <div class="footer-links">
+            <h5>Legal</h5>
+            <ul>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Security</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="copyright text-center">
+        <p class="mb-0">&copy; <script>document.write(new Date().getFullYear())</script> Trixamid. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Simple scroll animation
+    function initAOS() {
+      const elements = document.querySelectorAll('[data-aos]');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('aos-animate');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      elements.forEach(element => {
+        element.classList.add('aos-fade');
+        observer.observe(element);
+      });
+    }
+    
+    // Initialize animations when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      initAOS();
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
