@@ -629,6 +629,73 @@
   background: linear-gradient(to bottom, #f9fafb, #f3f4f6);
 }
 
+ .solution-card-extended {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+    height: 100%;
+    border: none;
+  }
+  
+  .solution-card-extended:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  }
+  
+  .solution-card-header {
+    padding: 16px 24px;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  
+  .solution-card-body {
+    padding: 24px;
+  }
+  
+  .solution-card-body h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: #343a40;
+  }
+  
+  .solution-card-body p {
+    color: #6c757d;
+    margin-bottom: 20px;
+  }
+  
+  .solution-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .feature-item i {
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  
+  .feature-item span {
+    color: #495057;
+  }
+  
+  @media (max-width: 767.98px) {
+    .solution-card-body {
+      padding: 18px;
+    }
+    
+    .solution-card-header {
+      padding: 14px 18px;
+    }
+  }
+
   </style>
 </head>
 <body>
@@ -703,7 +770,7 @@
                 <i class="fas fa-robot"></i>
               </div>
               <h5 class="card-title">Agentic AI Integration</h5>
-              <p class="card-text">Unlike traditional ERPs, Trixamid leverages agentic AI to automate administrative workflows, personalize learning experiences, and assist decision-making for school management.</p>
+              <p class="card-text">Unlike traditional ERPs, Trixamid leverages agentic AI to automate administrative workflows, personalize learning experiences, and assist decision-making for management.</p>
             </div>
           </div>
         </div>
@@ -714,7 +781,7 @@
                 <i class="fas fa-school"></i>
               </div>
               <h5 class="card-title">Vertical Specialization</h5>
-              <p class="card-text">Designed specifically for K-12 schools and educational institutions, Trixamid aligns with academic cycles, assessment standards, and communication needs of schools.</p>
+              <p class="card-text">Designed specifically for schools and educational institutions, Trixamid aligns with academic cycles, assessment standards, and communication needs of institution.</p>
             </div>
           </div>
         </div>
@@ -758,7 +825,7 @@
                 <i class="fas fa-lock"></i>
               </div>
               <h5 class="card-title">Data Ownership & Privacy</h5>
-              <p class="card-text">Ensures secure data handling and transparency, addressing key concerns of schools regarding data leakage and platform lock-in.</p>
+              <p class="card-text">Ensures secure data handling and transparency, addressing key concerns of institution regarding data leakage and platform lock-in.</p>
             </div>
           </div>
         </div>
@@ -799,7 +866,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-10 text-center">
-        <h2 class="section-title">Powerful Features for Every School Need</h2>
+        <h2 class="section-title">Powerful Features for Every institution Need</h2>
         <p class="section-subtitle">Comprehensive modules powered by Agentic AI to transform educational management</p>
       </div>
     </div>
@@ -807,28 +874,28 @@
     <!-- Feature Tabs -->
     <div class="row mt-5">
       <div class="col-lg-12">
-        <ul class="nav nav-pills justify-content-center mb-5" id="feature-tabs" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="admin-tab" data-bs-toggle="pill" data-bs-target="#admin-features" type="button" role="tab">
-              <i class="fas fa-user-tie me-2"></i> Admin Features
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="teacher-tab" data-bs-toggle="pill" data-bs-target="#teacher-features" type="button" role="tab">
-              <i class="fas fa-chalkboard-teacher me-2"></i> Teacher Features
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="student-tab" data-bs-toggle="pill" data-bs-target="#student-features" type="button" role="tab">
-              <i class="fas fa-user-graduate me-2"></i> Student Features
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="parent-tab" data-bs-toggle="pill" data-bs-target="#parent-features" type="button" role="tab">
-              <i class="fas fa-users me-2"></i> Parent Features
-            </button>
-          </li>
-        </ul>
+        <ul class="nav nav-pills justify-content-center mb-5 flex-wrap" id="feature-tabs" role="tablist">
+  <li class="nav-item flex-grow-1  px-1 mb-1" role="presentation">
+    <button class="nav-link active w-100 text-center py-2 px-3" id="admin-tab" data-bs-toggle="pill" data-bs-target="#admin-features" type="button" role="tab">
+      <i class="fas fa-user-tie me-2"></i> Admin Features
+    </button>
+  </li>
+  <li class="nav-item flex-grow-1  px-1 mb-1" role="presentation">
+    <button class="nav-link w-100 text-center py-2 px-3" id="teacher-tab" data-bs-toggle="pill" data-bs-target="#teacher-features" type="button" role="tab">
+      <i class="fas fa-chalkboard-teacher me-2"></i> Teacher Features
+    </button>
+  </li>
+  <li class="nav-item flex-grow-1  px-1 mb-1" role="presentation">
+    <button class="nav-link w-100 text-center py-2 px-3" id="student-tab" data-bs-toggle="pill" data-bs-target="#student-features" type="button" role="tab">
+      <i class="fas fa-user-graduate me-2"></i> Student Features
+    </button>
+  </li>
+  <li class="nav-item flex-grow-1 px-1 mb-1" role="presentation">
+    <button class="nav-link w-100 text-center py-2 px-3" id="parent-tab" data-bs-toggle="pill" data-bs-target="#parent-features" type="button" role="tab">
+      <i class="fas fa-users me-2"></i> Parent Features
+    </button>
+  </li>
+</ul>
 
         <div class="tab-content" id="feature-tabs-content">
           <!-- Admin Features -->
@@ -1082,7 +1149,7 @@
                     <i class="fas fa-comments text-danger"></i>
                   </div>
                   <h4>Teacher Communication</h4>
-                  <p>Direct messaging with teachers and school administration.</p>
+                  <p>Direct messaging with teachers and administration.</p>
                 </div>
               </div>
               
@@ -1103,197 +1170,145 @@
   </section>
 
  <section class="section bg-gradient-light" id="solutions">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10 text-center">
-          <h2 class="section-title">Tailored Solutions for Every Role</h2>
-          <p class="section-subtitle">Trixamid provides specialized interfaces and tools optimized for each user's needs</p>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 text-center">
+        <h2 class="section-title">Tailored Solutions for Every Role</h2>
+        <p class="section-subtitle">Trixamid provides specialized interfaces and tools optimized for each user's needs</p>
+      </div>
+    </div>
+
+    <div class="row g-4 mt-5">
+      <!-- School Admin Solution -->
+      <div class="col-lg-6" data-aos="fade-up">
+        <div class="solution-card-extended h-100">
+          <div class="solution-card-header bg-primary text-white">
+            <i class="fas fa-user-tie me-2"></i> For Administrators
+          </div>
+          <div class="solution-card-body">
+            <h3>Education Management Suite</h3>
+            <p>Comprehensive tools for administrators to efficiently manage all aspects of institute operations.</p>
+            
+            <div class="solution-features">
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>Centralized dashboard with real-time analytics</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>Automated fee collection and financial reporting</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>Staff management and payroll integration</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>AI-powered alerts for operational issues</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="row g-4 mt-5">
-        <!-- School Admin Solution -->
-        <div class="col-lg-6" data-aos="fade-up">
-          <div class="solution-card-extended h-100">
-            <div class="row g-0 h-100">
-              <div class="col-md-5 solution-img h-100" style="background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80')">
-                <div class="solution-badge">
-                  <i class="fas fa-user-tie me-2"></i> For Administrators
-                </div>
+      <!-- Teacher Solution -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="solution-card-extended h-100">
+          <div class="solution-card-header bg-success text-white">
+            <i class="fas fa-chalkboard-teacher me-2"></i> For Teachers
+          </div>
+          <div class="solution-card-body">
+            <h3>Teaching Excellence Toolkit</h3>
+            <p>Powerful tools designed to enhance teaching effectiveness and reduce administrative burden.</p>
+            
+            <div class="solution-features">
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>Smart attendance with facial recognition</span>
               </div>
-              <div class="col-md-7 d-flex flex-column">
-                <div class="solution-content-extended flex-grow-1">
-                  <h3>Education Management Suite</h3>
-                  <p>Comprehensive tools for administrators to efficiently manage all aspects of insitute operations.</p>
-                  
-                  <div class="solution-features">
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>Centralized dashboard with real-time analytics</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>Automated fee collection and financial reporting</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>Staff management and payroll integration</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>AI-powered alerts for operational issues</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>Customizable reporting and data exports</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-3">
-                  <a href="#" class="btn btn-primary">Explore Admin Features</a>
-                </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>Automated grading and performance analytics</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>Lesson planning with curriculum mapping</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>AI-powered student progress insights</span>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Teacher Solution -->
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-          <div class="solution-card-extended h-100">
-            <div class="row g-0 h-100">
-              <div class="col-md-5 solution-img h-100" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1422&q=80')">
-                <div class="solution-badge">
-                  <i class="fas fa-chalkboard-teacher me-2"></i> For Teachers
-                </div>
+      <!-- Student Solution -->
+      <div class="col-lg-6" data-aos="fade-up">
+        <div class="solution-card-extended h-100">
+          <div class="solution-card-header bg-info text-white">
+            <i class="fas fa-user-graduate me-2"></i> For Students
+          </div>
+          <div class="solution-card-body">
+            <h3>Student Success Platform</h3>
+            <p>Engaging interface that helps students stay organized and take ownership of their learning.</p>
+            
+            <div class="solution-features">
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>Personalized learning dashboard</span>
               </div>
-              <div class="col-md-7 d-flex flex-column">
-                <div class="solution-content-extended flex-grow-1">
-                  <h3>Teaching Excellence Toolkit</h3>
-                  <p>Powerful tools designed to enhance teaching effectiveness and reduce administrative burden.</p>
-                  
-                  <div class="solution-features">
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>Smart attendance with facial recognition</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>Automated grading and performance analytics</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>Lesson planning with curriculum mapping</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>AI-powered student progress insights</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>Parent communication portal</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-3">
-                  <a href="#" class="btn btn-primary">Explore Teacher Features</a>
-                </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>Homework and assignment submission portal</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>Grade tracking with performance trends</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>AI-powered study recommendations</span>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Student Solution -->
-        <div class="col-lg-6" data-aos="fade-up">
-          <div class="solution-card-extended h-100">
-            <div class="row g-0 h-100">
-              <div class="col-md-5 solution-img h-100" style="background-image: url('https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80')">
-                <div class="solution-badge">
-                  <i class="fas fa-user-graduate me-2"></i> For Students
-                </div>
-              </div>
-              <div class="col-md-7 d-flex flex-column">
-                <div class="solution-content-extended flex-grow-1">
-                  <h3>Student Success Platform</h3>
-                  <p>Engaging interface that helps students stay organized and take ownership of their learning.</p>
-                  
-                  <div class="solution-features">
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>Personalized learning dashboard</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>Homework and assignment submission portal</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>Grade tracking with performance trends</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>AI-powered study recommendations</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>School event and exam calendar</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-3">
-                  <a href="#" class="btn btn-primary">Explore Student Features</a>
-                </div>
-              </div>
-            </div>
+      <!-- Parent Solution -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="solution-card-extended h-100">
+          <div class="solution-card-header bg-warning text-dark">
+            <i class="fas fa-users me-2"></i> For Parents
           </div>
-        </div>
-
-        <!-- Parent Solution -->
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-          <div class="solution-card-extended h-100">
-            <div class="row g-0 h-100">
-              <div class="col-md-5 solution-img h-100" style="background-image: url('https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80')">
-                <div class="solution-badge">
-                  <i class="fas fa-users me-2"></i> For Parents
-                </div>
+          <div class="solution-card-body">
+            <h3>Parent Engagement Portal</h3>
+            <p>Stay connected and informed about your child's education journey.</p>
+            
+            <div class="solution-features">
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>Real-time attendance and grade alerts</span>
               </div>
-              <div class="col-md-7 d-flex flex-column">
-                <div class="solution-content-extended flex-grow-1">
-                  <h3>Parent Engagement Portal</h3>
-                  <p>Stay connected and informed about your child's education journey.</p>
-                  
-                  <div class="solution-features">
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>Real-time attendance and grade alerts</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>Fee payment and receipt tracking</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>Direct messaging with teachers</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>AI-powered performance insights</span>
-                    </div>
-                    <div class="feature-item">
-                      <i class="fas fa-check-circle text-primary"></i>
-                      <span>Multi-child support in single account</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-3">
-                  <a href="#" class="btn btn-primary">Explore Parent Features</a>
-                </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>Fee payment and receipt tracking</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>Direct messaging with teachers</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle text-primary"></i>
+                <span>AI-powered performance insights</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Feature Highlights Section -->
   <section class="section bg-white">
@@ -1301,7 +1316,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-10 text-center">
           <h2 class="section-title">Key Feature Highlights</h2>
-          <p class="section-subtitle">Discover how Trixamid's Agentic AI transforms school operations</p>
+          <p class="section-subtitle">Discover how Trixamid's Agentic AI transforms institution operations</p>
         </div>
       </div>
 
@@ -1362,7 +1377,7 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-8">
-          <h3 class="mb-3">Ready to transform your school with intelligent ERP?</h3>
+          <h3 class="mb-3">Ready to transform your institution with intelligent ERP?</h3>
           <p class="mb-lg-0">Join hundreds of educational institutions already benefiting from Trixamid's agentic AI platform.</p>
         </div>
         <div class="col-lg-4 text-lg-end">
@@ -1471,7 +1486,7 @@
       <div class="row g-4">
         <div class="col-lg-4">
           <a href="#" class="footer-logo">Trixamid</a>
-          <p>The smart ERP platform built for modern educational institutions. Empowering schools with agentic AI to transform education.</p>
+          <p>The smart ERP platform built for modern educational institutions. Empowering institution with agentic AI to transform education.</p>
           <div class="social-links social-links--footer mt-3">
           <a href="#"><i class="fab fa-twitter"></i></a>
           <a href="#"><i class="fab fa-linkedin-in"></i></a>
