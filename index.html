@@ -1,1313 +1,1126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trixamid | Service-Based Software Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #6C63FF;
-            --primary-dark: #5651d9;
-            --secondary: #2D2B55;
-            --accent: #00D9C0;
-            --light: #F8F9FF;
-            --dark: #1A1A2E;
-            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            --glass: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.2);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--dark);
-            color: var(--light);
-            line-height: 1.7;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(108, 99, 255, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(0, 217, 192, 0.1) 0%, transparent 20%);
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        section {
-            padding: 8rem 0;
-            position: relative;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .btn-primary {
-            background: var(--gradient);
-            color: white;
-            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.4);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(108, 99, 255, 0.6);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 2px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-        }
-        
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-        }
-        
-        .text-center {
-            text-align: center;
-        }
-        
-        .mb-1 { margin-bottom: 1rem; }
-        .mb-2 { margin-bottom: 2rem; }
-        .mb-3 { margin-bottom: 3rem; }
-        .mb-4 { margin-bottom: 4rem; }
-        .mb-5 { margin-bottom: 5rem; }
-        
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1.5rem 0;
-            transition: all 0.4s ease;
-        }
-        
-        header.scrolled {
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            padding: 1rem 0;
-        }
-        
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: white;
-            text-decoration: none;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .logo span {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 2.5rem;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            font-size: 1.1rem;
-            position: relative;
-        }
-        
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: white;
-        }
-        
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-        
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 0;
-        }
-        
-        .hero-content {
-            max-width: 700px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            background: linear-gradient(to right, #fff 30%, var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 3rem;
-            max-width: 600px;
-        }
-        
-        .hero-buttons .btn {
-            margin-right: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero-art {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50%;
-            height: 80%;
-            z-index: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .floating-shapes {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(30px);
-            opacity: 0.7;
-        }
-        
-        .shape-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--primary);
-            top: 10%;
-            right: 20%;
-            animation: float 8s ease-in-out infinite;
-        }
-        
-        .shape-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--accent);
-            bottom: 10%;
-            right: 10%;
-            animation: float 10s ease-in-out infinite 1s;
-        }
-        
-        .shape-3 {
-            width: 200px;
-            height: 200px;
-            background: #ff6b6b;
-            top: 40%;
-            right: 40%;
-            animation: float 12s ease-in-out infinite 2s;
-        }
-        
-        .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(rgba(45, 43, 85, 0.2) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(45, 43, 85, 0.2) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 0;
-        }
-        
-        /* Services */
-        .services {
-            background: rgba(26, 26, 46, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            margin: 0 2rem;
-        }
-        
-        .section-title {
-            font-size: 3.5rem;
-            margin-bottom: 5rem;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--accent);
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-        
-        .service-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .service-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(108, 99, 255, 0.1) 0%, rgba(0, 217, 192, 0.1) 100%);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: rgba(108, 99, 255, 0.4);
-        }
-        
-        .service-card:hover:before {
-            opacity: 1;
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .service-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-        
-        .service-card p {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 1.5rem;
-        }
-        
-        .service-features {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-        
-        .service-features li {
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-left: 2rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .service-features li:before {
-            content: '›';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-        
-        /* Approach */
-        .approach {
-            position: relative;
-            padding: 12rem 0;
-        }
-        
-        .approach-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .process-line {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            height: 4px;
-            background: var(--glass-border);
-            z-index: 0;
-        }
-        
-        .process-steps {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .step {
-            text-align: center;
-            width: 18%;
-            position: relative;
-        }
-        
-        .step-number {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--dark);
-            border: 2px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 2rem;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent);
-            transition: all 0.4s ease;
-            position: relative;
-        }
-        
-        .step:hover .step-number {
-            background: var(--gradient);
-            color: white;
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.4);
-        }
-        
-        .step h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-        
-        .step p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-        }
-        
-        /* Industries */
-        .industries {
-            background: linear-gradient(135deg, rgba(45, 43, 85, 0.5) 0%, rgba(26, 26, 46, 0.8) 100%);
-            border-radius: 30px;
-            margin: 0 2rem;
-        }
-        
-        .industry-mosaic {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(3, 200px);
-            gap: 1.5rem;
-        }
-        
-        .industry-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .industry-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border-color: rgba(108, 99, 255, 0.4);
-        }
-        
-        .industry-card:nth-child(1) {
-            grid-column: 1 / 3;
-            grid-row: 1 / 2;
-        }
-        
-        .industry-card:nth-child(2) {
-            grid-column: 3 / 4;
-            grid-row: 1 / 3;
-        }
-        
-        .industry-card:nth-child(3) {
-            grid-column: 4 / 5;
-            grid-row: 1 / 2;
-        }
-        
-        .industry-card:nth-child(4) {
-            grid-column: 1 / 2;
-            grid-row: 2 / 4;
-        }
-        
-        .industry-card:nth-child(5) {
-            grid-column: 2 / 3;
-            grid-row: 2 / 3;
-        }
-        
-        .industry-card:nth-child(6) {
-            grid-column: 3 / 5;
-            grid-row: 3 / 4;
-        }
-        
-        .industry-card:nth-child(7) {
-            grid-column: 2 / 3;
-            grid-row: 3 / 4;
-        }
-        
-        .industry-card:nth-child(8) {
-            grid-column: 4 / 5;
-            grid-row: 2 / 3;
-        }
-        
-        .industry-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-        
-        .industry-card h3 {
-            font-size: 1.5rem;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-        
-        .industry-card p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-        }
-        
-        /* Innovation */
-        .innovation {
-            position: relative;
-            padding: 10rem 0;
-        }
-        
-        .innovation-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-        
-        .innovation-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .innovation-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .innovation-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-        }
-        
-        .innovation-card h3 i {
-            margin-right: 15px;
-            font-size: 2rem;
-        }
-        
-        /* Tech Stack */
-        .tech-stack {
-            background: rgba(26, 26, 46, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            margin: 0 2rem;
-            padding: 6rem 0;
-        }
-        
-        .stack-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .stack-item {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            padding: 1rem 2rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .stack-item:hover {
-            background: var(--gradient);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
-        }
-        
-        /* CTA Section */
-        .cta {
-            background: var(--gradient);
-            color: white;
-            text-align: center;
-            padding: 8rem 0;
-            border-radius: 30px;
-            margin: 0 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 20%),
-                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.2) 0%, transparent 20%);
-            z-index: 1;
-        }
-        
-        .cta-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .cta h2 {
-            font-size: 3.5rem;
-            margin-bottom: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .cta p {
-            font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            opacity: 0.9;
-        }
-        
-        .cta .btn {
-            background: var(--dark);
-            color: white;
-            font-weight: 600;
-            padding: 1.2rem 3rem;
-            font-size: 1.1rem;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .cta .btn:hover {
-            background: rgba(26, 26, 46, 0.8);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Footer */
-        footer {
-            background: rgba(15, 14, 38, 0.9);
-            padding: 6rem 0 3rem;
-            position: relative;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 4rem;
-            margin-bottom: 4rem;
-        }
-        
-        .footer-about {
-            max-width: 350px;
-        }
-        
-        .footer-logo {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            color: white;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .footer-logo span {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .footer-about p {
-            opacity: 0.7;
-            margin-bottom: 2rem;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1.2rem;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background: var(--gradient);
-            transform: translateY(-5px);
-        }
-        
-        .footer-links h4 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            position: relative;
-            padding-bottom: 0.8rem;
-        }
-        
-        .footer-links h4:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links ul li {
-            margin-bottom: 1.2rem;
-        }
-        
-        .footer-links ul li a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-        }
-        
-        .footer-links ul li a:hover {
-            color: white;
-            padding-left: 5px;
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            opacity: 0.6;
-            font-size: 0.9rem;
-        }
-        
-        /* Animations */
-        @keyframes float {
-            0% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(-20px, -20px);
-            }
-            100% {
-                transform: translate(0, 0);
-            }
-        }
-        
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .industry-mosaic {
-                grid-template-rows: repeat(3, 180px);
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-            
-            .section-title {
-                font-size: 3rem;
-            }
-            
-            .process-line {
-                display: none;
-            }
-            
-            .process-steps {
-                flex-direction: column;
-                align-items: center;
-                gap: 4rem;
-            }
-            
-            .step {
-                width: 80%;
-            }
-            
-            .industry-mosaic {
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(4, 200px);
-            }
-            
-            .industry-card:nth-child(1) {
-                grid-column: 1 / 3;
-                grid-row: 1 / 2;
-            }
-            
-            .industry-card:nth-child(2) {
-                grid-column: 1 / 2;
-                grid-row: 2 / 3;
-            }
-            
-            .industry-card:nth-child(3) {
-                grid-column: 2 / 3;
-                grid-row: 2 / 3;
-            }
-            
-            .industry-card:nth-child(4) {
-                grid-column: 1 / 2;
-                grid-row: 3 / 4;
-            }
-            
-            .industry-card:nth-child(5) {
-                grid-column: 2 / 3;
-                grid-row: 3 / 4;
-            }
-            
-            .industry-card:nth-child(6) {
-                grid-column: 1 / 3;
-                grid-row: 4 / 5;
-            }
-            
-            .industry-card:nth-child(7),
-            .industry-card:nth-child(8) {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hero {
-                height: auto;
-                padding: 12rem 0 6rem;
-            }
-            
-            .hero-art {
-                position: relative;
-                width: 100%;
-                height: 400px;
-                margin-top: 3rem;
-                transform: none;
-            }
-            
-            .hero-content {
-                text-align: center;
-                max-width: 100%;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .cta h2 {
-                font-size: 2.5rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .btn {
-                width: 100%;
-                margin-right: 0 !important;
-                margin-bottom: 1rem;
-            }
-            
-            .services, .industries, .cta {
-                margin: 0;
-                border-radius: 0;
-            }
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Trixamid — End-to-end web &amp; mobile engineering built for production</title>
+<meta name="description" content="Trixamid designs, builds and deploys production-ready web platforms, mobile apps and cloud systems. Full-cycle engineering: architecture, sprints, CI/CD, launch and SLA support." />
+<link rel="icon" id="fav" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TRIXAMID — design tokens
+   ============================================================ */
+:root{
+  --void:#05081c;
+  --void-2:#080d27;
+  --navy:#0a1341;
+  --violet:#6221a2;
+  --violet-lit:#a16bf5;
+  --spark:#ff9633;
+  --spark-deep:#e07a18;
+  --paper:#eef0fa;
+  --muted:#969dc6;
+  --muted-2:#6f76a3;
+  --line:rgba(154,166,235,.15);
+  --line-strong:rgba(154,166,235,.32);
+  --panel:rgba(18,25,64,.55);
+
+  --display:'Archivo',system-ui,sans-serif;
+  --body:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  --mark:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAACB9UlEQVR42u29eaBlV1Um/n37nPuGGlJJpTIBGckACWEKRCBIhUkUcMRCkXmQQbHbbie0tStlSwMOP7QbW0CGAEnbptSmlUGBQCoSUGaBhBBCYkLIUJXUkJree/ecvX5/nDvsvc+ezn2vqm6FXOXl1X33nnP2OXtN31rrW8SDr9SLwGYC16jmn9tqANL+2EW9ueNWnUzOPlRUfVohPLWGPIyQh0B4IiDrQa4VkVUk5yEyC6IHsDmuAKT3wKGLan9WAHDwM/Id87vme/D8PXQu3zGyXsY6m++JhnAJxJKIHCR5AJC9EO4EZLuQd0PjewBuJ+U2kfrOhV0H7ga+3PcvcWPR/HqpBrZIl0v7Ad3cD77892XTQOC31u4f15z81BOqxd45CrhAKzyKwHkQORPESQSPESoSdERDIDKUT0A67EtXcEMCRwxOMeFGkGV8nh2Uh/94HNyXwW+kcwSBiJZGOeAukP8uwLeVxjc1cH052//Ovrs/u6N95E0DhbBVP6gMHlQAsZcCNqqB5dDmPZo5/unnKuBiJXyyhjyBxLmEWgcWY+GGBmWwUSG1Y5Vp3Gq69z5DSASHQLDpObgM/pm6Jhqf7brZxL8+50/i/JtsnhHB4a9DpSE1gHqPgN9Wwi9r4nMa8sWl+z5zk32Mzarx5LZpAPrBLf+gAhi4jPaGWH3Sk0/U1dyTCD5LRDaCOJ8sy7El12iMLQaCLhxsUObc167W9lA+fDnCx+94Daai0Ib6KQiyiaYGSkFXFYgbCFwrUJ9ShfzL/u2fvqet8EMh3YMK4AfKvZ879umnqxLPgcbzhbiELNY3TrUe7DWpAcpA2FU82s7b6InNL2xOeNiE+VAcI8e7ia2zwzVJ87BGhypJNfAUBCL1Lgivo+I/6Er/08Luz9z2YJjwg6UAhta+Gr6x6oSNJ6OeeR4pLxCpn0ZVrtYAGg9e1xAKKIogZYXuVSR+X2lrOfG1dT6PowhTYcdhWqcMIBENEYKq4CBkE13vA+WfKepvUFQfO7Bj293jr20sf5C8gh8ABbBZATdwbO03FavX73kGIS8V6ueR5XppLAQAXTfgnOFLLm8Te32EQyXIK33cSMy+YuucBLhMXReDOIMMwjxVcOjE6WonwI8q8IP7dz7102P8Z1MBbJUHOlbAHxTBX3XCc08upP8iCF4BqkcDhEgNQV0PdoeJKkGYtnbLEbjQJva60DIGx6cxlp/k7x3XmQVMdliDowyKIbbzNYh8kIX+q7FXsKkAzhcHGH5QAUy34APDB7b6uOdcoBReR8gvgOXxQA2RWg+ScgoQI/40k3NiybtkustdNmmOhe26uVdaKR2qdU5ynSu1Tuf7AogmQLBQgIJIfS+Bv6KWd+3f9ZnrffvqQQUw5RZ/3YbnXQTU/xHAz4HFjEgFEakArQaCj5Dg+38/dG54RLg6udb5OfcjAxhO/zpFA9QAS7KASLUE4d8A+LODOz/9hQdiaMAHxho2qbHg+/jjKOq3QL0JLJVIHyKoQCkgoC3SoX+JaR0oKyw8Yfjs8Mb4ses4kqnKKVjnMMVbkiUgtQawVcA/OXjf1V9sPvLAAAuPcgWwqRgK/vHHP+c8zeK3AbwYLEqRPgSoIFIM40oZwFUj536EYElCJciKu+qHA6CbNEZfQff6kK6z63VPkqIceAUFWUIaRfCBEvK2vfd95tvuHnxQARxWd7+p81679pnH92Znf1PAXyLLNSJLw0o8BYDiYMwicWFvO/3LVwJMYAmAvzZ/JYVIErZwpc4XAzc7rHOiyseVWqd/DVKPFYHeB8H/Kvv4w717r74Po36Row8f4NF3veNc/oYNz321oPivYHFaY/GlAlBggOH7Ib2xImj/VbyfjoUNsS2b2PRed9R3WN+ZcsC55QJ307DOHOt9uNabZfF5qgSqa0KC6HcTvH7j30+89WsOCo0gBjF2tDRuedxGo/ggoni6oIaIdwfcJNTyWXFohgGnxE/jAIQXWJgW6cjIWMeWR8nJWcp3LCWOO8DoHGMEALNT6M1T6Nw7c+5kvH21hwVGiADaWwLYKp2+cO+HAsb8rIr9BpWa07te5qTy/QhADhpbRHUmFCRE/oJP7n7OZD1UMfiSKkaZhnSuFbwz+qyEiVGUhopcAvvXgmuotuG3bwmjPPqgAVibWP+GEH78EUP+DLB+v9dIoJvPE6OIPAZwgYIANhIXdJ+5e9cGYBW9Zm47RbaSHf9nFMR0EIssd56FZ5yFXTLnrDL8/xAd6EKn+TbT+5YVd11w3+CgxxSnDYrqt/gdqYFNx4onn/h6hLifVQ0X3q6a3dkCkYTXgDcvISOP3wU8aP8dfI2k8WDq7lq3/0jgurW97NpFTNRiLnyfU2uRkml2c25A8ZcY6xfrcCqwz5/uc5Pth5URmKgn7cxx0HOmaqngIyZf1Vp+p+gduvbYR/o0lcNtUKgFOr/Bvq0444cfPJsq/VCwv1bI0LN8sZGDBxTE5Eo70kz896UAZy614w4tUwVDLUjisPyFr18W1nQjwmoxdYCU4CTp1OE6yTsvjksO7wwcMRzVARfYoUm3Tqn7N4o5tN09rSDBtCkANfHM5+YSf3iTgO0m1XqRfSeOt0BuVS0woW/h/8J1Gr7ScfQHMAqKwEnB/S1W6HY7YOxfl7hIrM7bOaNfCEXgl7nyXdTrbjj4vx7gPNVVZitQ7IXj9wZ2f3mrwRugpErhpeW0qmhtDnHziC95GllcRWC/Sb9DWkbtN6863/+V7jPQ49p5viRlEjI5M+8ih8xFjwq/WxmGu9mVHoU8qhcTuzkXi6awruE6uzLV3XScy1+nTD7nrtA4XjYlAEKXofk1gPZW6an79M982+Kse8w886AFYLv/JJ286gVo+oFj+WK0Xa0DUMNwST67estEwOvgk5aoHE4J0PYs0MBh/v6vlzg0LlgGQZQFdK3zOiT2Wdhdfds+AeetWpjZgstcgUzBTiFT/WPSPXBtvOupZwqI4EpsKp790iWvWrth8yvff/vLHz9XrC2oYrFEI54yV7zQYqY58bH3lK5F8hGkH7B94w1w5vL5nQz5b2XlXmJ8/zV147Yrv/qZ6+678a1XX7hM3D/a9YV+hX29clmvb5bKq9/6rA/8yJ4FfeGMXgTBNV+9o5e47w4jZJjP/49pS//8i7/x7pP3LpQLfUo5YnL3m1N4Xpfc4XzN1/47a+7h1Q07Z/77K/7p2s//86euv/Wta5aN+1dcATwQL7Bnz55ZAFu/9o73/lR/zYqPnL1m7tq1q1btt2L5g8f4m9f1/Yv7F4bL732v6/t7F2Z2/Nn7vnj8P157w9q6mflvP5jP5f+X+1vVwA8b/n+u/W8m89+y+v+1/uH2qgAAAABJRU5ErkJggg==');
+  --wrap:1180px;
+  --gutter:clamp(20px,5vw,64px);
+  --rhythm:clamp(72px,10vw,132px);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--void);
+  color:var(--paper);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(70rem 40rem at 82% -10%, rgba(98,33,162,.30), transparent 62%),
+    radial-gradient(50rem 34rem at 4% 22%, rgba(10,19,65,.85), transparent 70%);
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--spark);outline-offset:3px;border-radius:2px}
+
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;letter-spacing:-.025em;line-height:1.06;margin:0}
+h1{font-size:clamp(2.6rem,6.2vw,4.5rem);font-weight:800;letter-spacing:-.038em}
+h2{font-size:clamp(1.95rem,3.9vw,2.9rem);letter-spacing:-.032em}
+h3{font-size:clamp(1.15rem,1.8vw,1.4rem)}
+p{margin:0}
+.lede{font-size:clamp(1.05rem,1.5vw,1.22rem);color:var(--muted);max-width:62ch;line-height:1.62}
+.body-max{max-width:66ch;color:var(--muted)}
+
+.wrap{width:min(100% - var(--gutter)*2,var(--wrap));margin-inline:auto;position:relative;z-index:1}
+.rule{border:0;border-top:1px solid var(--line);margin:0}
+.section{padding-block:var(--rhythm)}
+.section--tight{padding-block:calc(var(--rhythm) * .62)}
+
+.s-head{
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.85fr);
+  gap:clamp(20px,4vw,64px);align-items:end;margin-bottom:clamp(34px,5vw,58px);
+}
+.s-head p{color:var(--muted);max-width:48ch}
+@media(max-width:820px){.s-head{grid-template-columns:1fr;align-items:start;gap:16px}}
+
+/* Header */
+.site-head{
+  position:sticky;top:0;z-index:60;
+  background:rgba(5,8,28,.88);
+  backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  border-bottom:1px solid var(--line);
+}
+.head-in{display:flex;align-items:center;gap:28px;height:74px}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:800;font-size:1.28rem;letter-spacing:-.035em}
+.mark{width:34px;height:34px;flex:none;border-radius:10px;background:url("Trixa.png") center/contain no-repeat;background-color:transparent}
+.nav{display:flex;align-items:center;gap:6px;margin-left:auto}
+.nav a{
+  padding:9px 14px;border-radius:8px;color:var(--muted);font-size:.95rem;font-weight:500;
+  transition:color .18s ease,background .18s ease;
+}
+.nav a:hover{color:var(--paper);background:rgba(154,166,235,.07)}
+.nav a[aria-current="page"]{color:var(--paper);background:rgba(154,166,235,.10)}
+.menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--line-strong);border-radius:9px;padding:9px 12px;cursor:pointer}
+.menu-btn span{display:block;width:18px;height:1.5px;background:var(--paper);margin:4px 0}
+
+@media(max-width:940px){
+  .nav{
+    position:fixed;inset:74px 0 auto;flex-direction:column;gap:0;margin:0;
+    background:var(--void-2);border-bottom:1px solid var(--line);
+    padding:10px var(--gutter) 22px;display:none;
+  }
+  .nav.open{display:flex}
+  .nav a{padding:14px 2px;border-bottom:1px solid var(--line);border-radius:0;font-size:1.05rem;width:100%}
+  .nav .btn-spark{margin-top:16px;border-bottom:0;justify-content:center}
+  .menu-btn{display:block}
+}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:13px 22px;border-radius:10px;border:1px solid transparent;
+  font-family:var(--display);font-weight:600;font-size:.98rem;letter-spacing:-.01em;
+  cursor:pointer;transition:transform .16s ease,background .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.btn-spark{
+  background:var(--spark) !important;
+  color:#1a0d00 !important;
+  font-weight:700 !important;
+  box-shadow:0 10px 30px -14px rgba(255,150,51,.85);
+  display:inline-flex !important;
+}
+.btn-spark:hover{background:#ffa74f !important;transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line-strong);color:var(--paper);background:rgba(154,166,235,.04)}
+.btn-ghost:hover{border-color:var(--violet-lit);background:rgba(161,107,245,.10)}
+
+/* Hero */
+.hero{padding-block:clamp(56px,8vw,104px) clamp(60px,8vw,110px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(32px,5vw,72px);align-items:center}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr;gap:44px}}
+
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:10px;margin-bottom:26px;
+  font-size:.9rem;color:var(--muted);
+}
+.hero-kicker b{color:var(--paper);font-weight:600}
+.spark-dot{width:9px;height:9px;flex:none;background:var(--spark);clip-path:polygon(50% 0,58% 42%,100% 50%,58% 58%,50% 100%,42% 58%,0 50%,42% 42%)}
+
+h1 .stroke{
+  color:transparent;
+  -webkit-text-stroke:1.4px rgba(238,240,250,.55);
+}
+.hero p.lede{margin-top:24px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hero-facts{
+  display:flex;flex-wrap:wrap;gap:0 clamp(20px,3.4vw,40px);margin-top:40px;
+  padding-top:22px;border-top:1px solid var(--line);
+  font-size:.88rem;color:var(--muted-2);
+}
+.hero-facts span{display:inline-flex;align-items:center;gap:8px;padding:5px 0}
+.hero-facts span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--violet-lit)}
+
+.deploy{
+  border:1px solid var(--line-strong);border-radius:16px;overflow:hidden;
+  background:linear-gradient(168deg,rgba(10,19,65,.92),rgba(98,33,162,.20) 78%,rgba(8,13,39,.95));
+  box-shadow:0 40px 90px -50px rgba(98,33,162,.9);
+}
+.deploy-bar{
+  display:flex;align-items:center;gap:9px;padding:12px 16px;border-bottom:1px solid var(--line);
+  font-family:var(--mono);font-size:.74rem;color:var(--muted-2);letter-spacing:.02em;
+}
+.deploy-bar i{width:9px;height:9px;border-radius:50%;background:rgba(154,166,235,.25);display:block}
+.deploy-bar i:first-child{background:rgba(255,150,51,.6)}
+.deploy-bar span{margin-left:auto}
+.deploy-body{padding:20px 18px 22px;font-family:var(--mono);font-size:.83rem;line-height:1.5}
+.deploy-body .cmd{color:var(--paper);margin-bottom:14px}
+.deploy-body .cmd em{color:var(--spark);font-style:normal}
+.dline{
+  display:grid;grid-template-columns:18px 1fr auto;gap:10px;align-items:baseline;
+  padding:5px 0;color:var(--muted);opacity:0;transform:translateY(4px);
+}
+.dline.in{opacity:1;transform:none;transition:opacity .34s ease,transform .34s ease}
+.dline .tick{color:#5ee2a0}
+.dline .val{color:var(--muted-2);font-size:.78rem;white-space:nowrap}
+.dline.final{
+  margin-top:12px;padding-top:14px;border-top:1px solid var(--line);
+  color:var(--paper);grid-template-columns:18px 1fr auto;
+}
+.dline.final .tick{color:var(--spark)}
+.dline.final .val{color:#5ee2a0}
+
+/* Capabilities (3 columns) */
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.cap{
+  padding:34px clamp(18px,2.2vw,30px) 30px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);
+  position:relative;
+}
+.cap:first-child{padding-left:0}
+.cap:last-child{border-right:0;padding-right:0}
+.cap-ico{width:22px;height:22px;color:var(--violet-lit);margin-bottom:18px}
+.cap h3{margin-bottom:10px}
+.cap p{color:var(--muted);font-size:.95rem;line-height:1.6}
+.cap ul{margin:16px 0 0;padding:0;list-style:none;font-size:.86rem;color:var(--muted-2)}
+.cap ul li{padding:4px 0 4px 14px;position:relative}
+.cap ul li::before{content:"";position:absolute;left:0;top:13px;width:5px;height:1px;background:var(--line-strong)}
+@media(max-width:820px){
+  .cap-grid{grid-template-columns:1fr}
+  .cap{padding-left:0!important;padding-right:0!important;border-right:0}
+}
+
+/* Lifecycle */
+.life{display:grid;grid-template-columns:minmax(0,.46fr) minmax(0,1fr);gap:clamp(26px,4vw,58px)}
+@media(max-width:880px){.life{grid-template-columns:1fr}}
+
+.steps{list-style:none;margin:0;padding:0;position:relative}
+.steps::before{content:"";position:absolute;left:15px;top:14px;bottom:14px;width:1px;background:var(--line)}
+.step{position:relative}
+.step button{
+  display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:center;width:100%;
+  background:none;border:0;padding:12px 10px 12px 0;text-align:left;cursor:pointer;border-radius:10px;
+  color:var(--muted);transition:color .18s ease;
+}
+.step button:hover{color:var(--paper)}
+.step .num{
+  position:relative;z-index:1;width:32px;height:32px;border-radius:50%;
+  display:grid;place-items:center;font-family:var(--mono);font-size:.78rem;
+  background:var(--void);border:1px solid var(--line-strong);color:var(--muted-2);
+  transition:all .2s ease;
+}
+.step .label{font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:-.01em}
+.step[aria-selected="true"] button{color:var(--paper)}
+.step[aria-selected="true"] .num{background:var(--spark);border-color:var(--spark);color:#1a0d00;font-weight:500}
+
+.stage{
+  border:1px solid var(--line-strong);border-radius:16px;padding:clamp(24px,3.4vw,38px);
+  background:linear-gradient(150deg,rgba(18,25,64,.72),rgba(98,33,162,.10));
+}
+.stage[hidden]{display:none}
+.stage h3{font-size:clamp(1.35rem,2.4vw,1.75rem);margin-bottom:14px}
+.stage .meta{
+  font-family:var(--mono);font-size:.76rem;color:var(--spark);margin-bottom:18px;
+}
+.stage p{color:var(--muted);max-width:60ch}
+.stage-out{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.stage-out h4{font-family:var(--display);font-size:.95rem;font-weight:600;margin-bottom:12px}
+.stage-out ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+.stage-out li{display:grid;grid-template-columns:16px 1fr;gap:10px;color:var(--muted);font-size:.93rem}
+.stage-out li svg{width:16px;height:16px;color:#5ee2a0;margin-top:5px}
+
+/* Stack */
+.stack-row{
+  display:grid;grid-template-columns:170px 1fr;gap:clamp(16px,3vw,42px);
+  padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline;
+}
+.stack-row:first-of-type{border-top:1px solid var(--line)}
+.stack-row h3{font-size:1rem;color:var(--paper)}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{
+  border:1px solid var(--line);border-radius:999px;padding:6px 14px;
+  font-size:.86rem;color:var(--muted);background:rgba(154,166,235,.04);
+  transition:border-color .18s ease,color .18s ease;
+}
+.pill:hover{border-color:var(--violet-lit);color:var(--paper)}
+@media(max-width:700px){.stack-row{grid-template-columns:1fr;gap:14px}}
+
+/* Guarantees */
+.guard{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.guard>div{background:var(--void);padding:clamp(22px,3vw,32px)}
+.guard h3{font-size:1.08rem;margin-bottom:9px;display:flex;align-items:center;gap:10px}
+.guard h3 svg{width:17px;height:17px;color:var(--spark);flex:none}
+.guard p{color:var(--muted);font-size:.94rem}
+@media(max-width:720px){.guard{grid-template-columns:1fr}}
+
+/* Service deep-dives */
+.svc{
+  display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:clamp(24px,4vw,64px);padding-block:clamp(40px,5vw,62px);border-bottom:1px solid var(--line);
+}
+.svc:last-of-type{border-bottom:0}
+.svc-tag{font-family:var(--mono);font-size:.75rem;color:var(--spark);margin-bottom:14px;display:block}
+.svc h2{font-size:clamp(1.6rem,2.9vw,2.15rem);margin-bottom:16px}
+.svc-list{margin:0;padding:0;list-style:none;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.svc-list li{background:var(--void-2);padding:16px 20px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center}
+.svc-list b{font-weight:600;font-size:.97rem}
+.svc-list span{color:var(--muted-2);font-size:.83rem;font-family:var(--mono);text-align:right}
+@media(max-width:880px){.svc{grid-template-columns:1fr;gap:26px}}
+
+/* Deliverables table */
+.tbl-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:640px}
+th,td{text-align:left;padding:16px 20px;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{
+  font-family:var(--display);font-size:.82rem;font-weight:600;color:var(--muted-2);
+  background:rgba(154,166,235,.05);letter-spacing:.01em;
+}
+tbody tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600;width:30%}
+td:nth-child(2){color:var(--muted);font-size:.95rem}
+td:last-child{color:var(--muted-2);font-family:var(--mono);font-size:.8rem;width:22%}
+
+/* Solutions */
+.sol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,2.4vw,26px)}
+.sol{
+  border:1px solid var(--line-strong);border-radius:16px;padding:clamp(24px,3vw,34px);
+  background:linear-gradient(160deg,rgba(18,25,64,.6),rgba(5,8,28,.4));
+  display:flex;flex-direction:column;
+}
+.sol h3{font-size:1.32rem;margin-bottom:12px}
+.sol>p{color:var(--muted);font-size:.96rem}
+.sol dl{margin:22px 0 0;padding-top:18px;border-top:1px solid var(--line);display:grid;gap:12px}
+.sol dt{font-size:.93rem;font-weight:600}
+.sol dd{margin:2px 0 0;color:var(--muted-2);font-size:.88rem;line-height:1.55}
+.sol-foot{margin-top:auto;padding-top:22px;font-family:var(--mono);font-size:.76rem;color:var(--spark)}
+@media(max-width:820px){.sol-grid{grid-template-columns:1fr}}
+
+/* About */
+.creed{
+  border-left:2px solid var(--spark);padding:6px 0 6px clamp(20px,3vw,34px);
+  font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,3.4vw,2.35rem);
+  line-height:1.18;letter-spacing:-.03em;max-width:22ch;
+}
+.two-col{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(26px,4vw,58px)}
+@media(max-width:820px){.two-col{grid-template-columns:1fr}}
+.principle{padding:22px 0;border-bottom:1px solid var(--line)}
+.principle h3{font-size:1.05rem;margin-bottom:8px}
+.principle p{color:var(--muted);font-size:.94rem}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.72fr);gap:clamp(28px,4vw,64px);align-items:start}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+form{display:grid;gap:18px}
+.field{display:grid;gap:7px}
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:600px){.row-2{grid-template-columns:1fr}}
+label{font-size:.87rem;font-weight:500;color:var(--paper)}
+label .opt{color:var(--muted-2);font-weight:400}
+input,select,textarea{
+  width:100%;background:rgba(8,13,39,.85);border:1px solid var(--line-strong);border-radius:10px;
+  padding:12px 14px;font-size:.96rem;transition:border-color .18s ease,background .18s ease;
+}
+input::placeholder,textarea::placeholder{color:var(--muted-2)}
+input:focus,select:focus,textarea:focus{border-color:var(--violet-lit);background:rgba(18,25,64,.9)}
+select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%23969dc6' stroke-width='2'><path d='M3 5l4 4 4-4'/></svg>");background-repeat:no-repeat;background-position:right 14px center}
+textarea{resize:vertical;min-height:140px;line-height:1.6}
+.err{color:var(--spark);font-size:.82rem;display:none}
+.field.invalid .err{display:block}
+.field.invalid input,.field.invalid textarea,.field.invalid select{border-color:var(--spark)}
+.form-note{color:var(--muted-2);font-size:.85rem;max-width:52ch}
+.sent{
+  border:1px solid #5ee2a0;background:rgba(94,226,160,.08);border-radius:12px;padding:18px 20px;
+  display:none;gap:12px;align-items:flex-start;
+}
+.sent.show{display:grid;grid-template-columns:18px 1fr}
+.sent svg{width:18px;height:18px;color:#5ee2a0;margin-top:4px}
+.sent p{font-size:.93rem;color:var(--paper)}
+.sent p+p{color:var(--muted);margin-top:6px}
+
+.side-card{border:1px solid var(--line);border-radius:14px;padding:26px;background:rgba(18,25,64,.4)}
+.side-card+.side-card{margin-top:18px}
+.side-card h3{font-size:1.02rem;margin-bottom:10px}
+.side-card p{color:var(--muted);font-size:.93rem}
+.side-card a.mail{color:var(--spark);font-family:var(--mono);font-size:.9rem;display:inline-block;margin-top:10px;border-bottom:1px solid rgba(255,150,51,.35);padding-bottom:1px}
+.slots{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.slots li{
+  display:flex;justify-content:space-between;gap:12px;font-size:.88rem;color:var(--muted);
+  padding:10px 12px;border:1px solid var(--line);border-radius:9px;font-family:var(--mono);
+}
+.slots li b{color:var(--paper);font-weight:500}
+
+/* CTA band + footer */
+.cta-band{
+  border:1px solid var(--line-strong);border-radius:20px;overflow:hidden;
+  background:linear-gradient(115deg,var(--navy) 0%,#1b1152 46%,var(--violet) 100%);
+  padding:clamp(34px,5vw,58px);
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(22px,4vw,48px);align-items:center;
+  position:relative;
+}
+.cta-band::after{
+  content:"";position:absolute;right:-40px;top:-60px;width:260px;height:260px;
+  background:radial-gradient(circle,rgba(255,150,51,.30),transparent 66%);
+}
+.cta-band h2{font-size:clamp(1.7rem,3.2vw,2.4rem);margin-bottom:12px;position:relative;z-index:1}
+.cta-band p{color:rgba(238,240,250,.78);max-width:52ch;position:relative;z-index:1}
+.cta-band .btns{display:flex;flex-wrap:wrap;gap:12px;position:relative;z-index:1}
+@media(max-width:820px){.cta-band{grid-template-columns:1fr}}
+
+.site-foot{border-top:1px solid var(--line);padding-block:52px 40px;margin-top:var(--rhythm)}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,.8fr));gap:32px}
+.foot-grid p{color:var(--muted-2);font-size:.9rem;max-width:34ch;margin-top:14px}
+.foot-grid h4{font-family:var(--display);font-size:.85rem;font-weight:600;color:var(--muted-2);margin-bottom:14px}
+.foot-grid ul{margin:0;padding:0;list-style:none;display:grid;gap:9px;font-size:.92rem}
+.foot-grid a{color:var(--muted)}
+.foot-grid a:hover{color:var(--paper)}
+.foot-base{
+  display:flex;flex-wrap:wrap;gap:14px 26px;justify-content:space-between;
+  margin-top:44px;padding-top:22px;border-top:1px solid var(--line);
+  color:var(--muted-2);font-size:.84rem;
+}
+@media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.foot-grid{grid-template-columns:1fr}}
+
+.page[hidden]{display:none}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:var(--gutter);top:12px;z-index:100;background:var(--spark);color:#1a0d00;padding:10px 16px;border-radius:8px}
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo">Trixa<span>mid</span></a>
-                <ul class="nav-links">
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#approach">Approach</a></li>
-                    <li><a href="#industries">Industries</a></li>
-                    <li><a href="#innovation">Innovation</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<a class="skip" href="#main">Skip to content</a>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Digital Alchemy for the Modern Age</h1>
-                <p>We transform complex challenges into elegant software solutions through innovative thinking and technical mastery.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Start Your Journey</a>
-                    <a href="#services" class="btn btn-outline">Explore Our Craft</a>
-                </div>
-            </div>
-            <div class="hero-art">
-                <div class="floating-shapes">
-                    <div class="shape shape-1"></div>
-                    <div class="shape shape-2"></div>
-                    <div class="shape shape-3"></div>
-                </div>
-            </div>
-        </div>
-        <div class="grid-overlay"></div>
-    </section>
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="#/" data-link>
+      <span class="mark" role="img" aria-label="Trixamid logo"></span>
+      Trixamid
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#/" data-link>Home</a>
+      <a href="#/services" data-link>Services</a>
+      <a href="#/solutions" data-link>Solutions</a>
+      <a href="#/about" data-link>Company</a>
+      <a href="#/contact" data-link>Contact</a>
+      <a class="btn btn-spark" href="#/contact" data-link>Book a consultation</a>
+    </nav>
+  </div>
+</header>
 
-    <!-- Services -->
-    <section class="services" id="services">
-        <div class="container">
-            <h2 class="section-title">Crafting Digital Excellence</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cube"></i>
-                    </div>
-                    <h3>Digital Architecture</h3>
-                    <p>Designing foundations for scalable, future-proof systems</p>
-                    <ul class="service-features">
-                        <li>Cloud-native infrastructure</li>
-                        <li>Microservices architecture</li>
-                        <li>System integration design</li>
-                        <li>Scalability planning</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Cognitive Systems</h3>
-                    <p>Building intelligence into your digital ecosystem</p>
-                    <ul class="service-features">
-                        <li>Machine learning implementation</li>
-                        <li>Predictive analytics engines</li>
-                        <li>Natural language processing</li>
-                        <li>Computer vision solutions</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-microchip"></i>
-                    </div>
-                    <h3>Embedded Intelligence</h3>
-                    <p>Creating the bridge between hardware and software</p>
-                    <ul class="service-features">
-                        <li>IoT platform development</li>
-                        <li>Edge computing solutions</li>
-                        <li>Sensor network integration</li>
-                        <li>Industrial automation systems</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <h3>Cloud Alchemy</h3>
-                    <p>Transforming infrastructure into strategic advantage</p>
-                    <ul class="service-features">
-                        <li>Multi-cloud orchestration</li>
-                        <li>Serverless architecture</li>
-                        <li>Containerization strategy</li>
-                        <li>Infrastructure as Code</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <h3>Product Evolution</h3>
-                    <p>From concept to market leader</p>
-                    <ul class="service-features">
-                        <li>SaaS platform development</li>
-                        <li>MVP to enterprise scaling</li>
-                        <li>Continuous deployment pipelines</li>
-                        <li>Growth-driven development</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+<main id="main">
 
-    <!-- Approach -->
-    <section class="approach" id="approach">
-        <div class="container">
-            <div class="approach-container">
-                <h2 class="section-title">Our Creative Process</h2>
-                <div class="process-line"></div>
-                <div class="process-steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h3>Discover</h3>
-                        <p>Deep immersion into your vision and challenges</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h3>Design</h3>
-                        <p>Crafting elegant technical blueprints</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h3>Develop</h3>
-                        <p>Agile creation with continuous refinement</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <h3>Deploy</h3>
-                        <p>Seamless transition to production</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">5</div>
-                        <h3>Evolve</h3>
-                        <p>Continuous innovation and enhancement</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ==========================================================
+     HOME
+     ========================================================== -->
+<div class="page" id="page-home">
 
-    <!-- Industries -->
-    <section class="industries" id="industries">
-        <div class="container">
-            <h2 class="section-title">Industry Transformation</h2>
-            <div class="industry-mosaic">
-                <div class="industry-card">
-                    <div class="industry-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3>AgriTech</h3>
-                    <p>Precision agriculture through AI and IoT</p>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3>HealthTech</h3>
-                    <p>Revolutionizing patient care with technology</p>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>FinTech</h3>
-                    <p>Secure, innovative financial ecosystems</p>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon">
-                        <i class="fas fa-industry"></i>
-                    </div>
-                    <h3>Industry 4.0</h3>
-                    <p>Smart manufacturing solutions</p>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>EdTech</h3>
-                    <p>Transforming learning experiences</p>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon">
-                        <i class="fas fa-shipping-fast"></i>
-                    </div>
-                    <h3>Logistics</h3>
-                    <p>Intelligent supply chain solutions</p>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon">
-                        <i class="fas fa-city"></i>
-                    </div>
-                    <h3>Smart Cities</h3>
-                    <p>Building the urban future</p>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Automation</h3>
-                    <p>Intelligent process optimization</p>
-                </div>
-            </div>
+  <section class="wrap hero">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-kicker"><i class="spark-dot"></i> Software consulting &amp; product engineering · <b>Trixamid</b></p>
+        <h1>End-to-end web &amp; mobile engineering,<br><span class="stroke">built for production.</span></h1>
+        <p class="lede">We take a product from first architecture diagram to the deploy that carries real traffic — custom web platforms, mobile apps and cloud systems built to your exact requirements, then kept running.</p>
+        <div class="hero-actions">
+          <a class="btn btn-spark" href="#/contact" data-link>Book technical consultation</a>
+          <a class="btn btn-ghost" href="#/solutions" data-link>Explore solutions</a>
         </div>
-    </section>
-
-    <!-- Innovation -->
-    <section class="innovation" id="innovation">
-        <div class="container">
-            <h2 class="section-title">The Innovation Atelier</h2>
-            <p class="text-center mb-5">Where we shape the future of technology</p>
-            <div class="innovation-grid">
-                <div class="innovation-card">
-                    <h3><i class="fas fa-microchip"></i> Edge Intelligence</h3>
-                    <p>Developing decentralized AI systems that process data at the source for real-time decision making in remote environments.</p>
-                </div>
-                <div class="innovation-card">
-                    <h3><i class="fas fa-link"></i> Blockchain Ecosystems</h3>
-                    <p>Creating transparent, secure transactional frameworks for industries requiring immutable records and trustless interactions.</p>
-                </div>
-                <div class="innovation-card">
-                    <h3><i class="fas fa-atom"></i> Quantum Computing</h3>
-                    <p>Exploring next-generation computational models to solve problems beyond the reach of classical computers.</p>
-                </div>
-                <div class="innovation-card">
-                    <h3><i class="fas fa-leaf"></i> Sustainable Tech</h3>
-                    <p>Developing energy-efficient computing solutions and algorithms to reduce the digital carbon footprint.</p>
-                </div>
-            </div>
+        <div class="hero-facts">
+          <span>One team, discovery through SLA</span>
+          <span>Your repos, your cloud accounts</span>
+          <span>Fixed milestones, no open-ended retainers</span>
         </div>
-    </section>
+      </div>
 
-    <!-- Tech Stack -->
-    <section class="tech-stack">
-        <div class="container">
-            <h2 class="section-title">Our Digital Palette</h2>
-            <div class="stack-container">
-                <div class="stack-item">React</div>
-                <div class="stack-item">Vue.js</div>
-                <div class="stack-item">Angular</div>
-                <div class="stack-item">Node.js</div>
-                <div class="stack-item">Python</div>
-                <div class="stack-item">TensorFlow</div>
-                <div class="stack-item">PyTorch</div>
-                <div class="stack-item">Kubernetes</div>
-                <div class="stack-item">Docker</div>
-                <div class="stack-item">AWS</div>
-                <div class="stack-item">Azure</div>
-                <div class="stack-item">GCP</div>
-                <div class="stack-item">PostgreSQL</div>
-                <div class="stack-item">MongoDB</div>
-                <div class="stack-item">Redis</div>
-                <div class="stack-item">GraphQL</div>
-                <div class="stack-item">Rust</div>
-                <div class="stack-item">C/C++</div>
-            </div>
+      <div class="deploy" aria-label="Example production release output">
+        <div class="deploy-bar"><i></i><i></i><i></i> trixamid · release pipeline <span>main</span></div>
+        <div class="deploy-body">
+          <p class="cmd">$ <em>trixamid</em> deploy --env production</p>
+          <div class="dline" data-d="1"><span class="tick">✓</span><span>Types &amp; lint</span><span class="val">0 errors</span></div>
+          <div class="dline" data-d="2"><span class="tick">✓</span><span>Unit + integration + e2e</span><span class="val">412 passed</span></div>
+          <div class="dline" data-d="3"><span class="tick">✓</span><span>Container build, signed</span><span class="val">linux/amd64</span></div>
+          <div class="dline" data-d="4"><span class="tick">✓</span><span>Database migration</span><span class="val">3 applied</span></div>
+          <div class="dline" data-d="5"><span class="tick">✓</span><span>Canary at 10% traffic</span><span class="val">p95 118 ms</span></div>
+          <div class="dline final" data-d="6"><span class="tick">◆</span><span>Release v4.2.0 promoted</span><span class="val">0 s downtime</span></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- CTA Section -->
-    <section class="cta" id="contact">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Transform Your Digital Future?</h2>
-                <p>Partner with us to create technology that doesn't just work—it inspires.</p>
-                <a href="#contact" class="btn">Begin Your Transformation</a>
+  <hr class="rule">
+
+  <section class="wrap section">
+    <div class="s-head">
+      <h2>What we build</h2>
+      <p>Three core disciplines, one delivery team. Most engagements combine at least two — a platform rarely ships without the infrastructure under it.</p>
+    </div>
+    <div class="cap-grid">
+      <article class="cap">
+        <svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2.5" y="4" width="19" height="14" rx="2"/><path d="M2.5 8.5h19M6 12h6M6 15h9"/></svg>
+        <h3>Web platforms</h3>
+        <p>Multi-tenant SaaS, internal operations tools and customer portals that hold up under concurrency.</p>
+        <ul><li>Role-based access &amp; audit trails</li><li>REST and GraphQL APIs</li><li>Event-driven back ends</li></ul>
+      </article>
+      <article class="cap">
+        <svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>
+        <h3>Mobile apps</h3>
+        <p>iOS and Android from one codebase where it makes sense, native where the requirements demand it.</p>
+        <ul><li>Offline-first sync</li><li>Push, biometrics, deep links</li><li>Store submission handled</li></ul>
+      </article>
+      <article class="cap">
+        <svg class="cap-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 17.7 8.2 4 4 0 0 1 17.5 18z"/><path d="M12 12v5M9.6 14.4 12 12l2.4 2.4"/></svg>
+        <h3>Cloud &amp; DevOps</h3>
+        <p>Infrastructure defined in code, pipelines that deploy without a maintenance window.</p>
+        <ul><li>Terraform / Pulumi IaC</li><li>Kubernetes &amp; serverless</li><li>Observability and alerting</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="wrap section">
+    <div class="s-head">
+      <h2>How a build runs</h2>
+      <p>Five stages from signed scope to steady state. Select a stage to see what happens inside it and what lands in your hands at the end.</p>
+    </div>
+    <div class="life">
+      <ul class="steps" role="tablist" aria-label="Delivery lifecycle" id="steps"></ul>
+      <div id="stages"></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="wrap section">
+    <div class="s-head">
+      <h2>Working stack</h2>
+      <p>Chosen per project against your team's ability to maintain it after handover — never because it is new.</p>
+    </div>
+    <div>
+      <div class="stack-row"><h3>Front end</h3><div class="pills"><span class="pill">React</span><span class="pill">Next.js</span><span class="pill">TypeScript</span><span class="pill">Tailwind CSS</span><span class="pill">Vite</span></div></div>
+      <div class="stack-row"><h3>Back end</h3><div class="pills"><span class="pill">Node.js</span><span class="pill">NestJS</span><span class="pill">Python</span><span class="pill">FastAPI</span><span class="pill">Go</span><span class="pill">gRPC</span></div></div>
+      <div class="stack-row"><h3>Mobile</h3><div class="pills"><span class="pill">Flutter</span><span class="pill">React Native</span><span class="pill">Swift</span><span class="pill">Kotlin</span></div></div>
+      <div class="stack-row"><h3>Data</h3><div class="pills"><span class="pill">PostgreSQL</span><span class="pill">Redis</span><span class="pill">MongoDB</span><span class="pill">ClickHouse</span><span class="pill">Kafka</span></div></div>
+      <div class="stack-row"><h3>Cloud &amp; ops</h3><div class="pills"><span class="pill">AWS</span><span class="pill">GCP</span><span class="pill">Azure</span><span class="pill">Docker</span><span class="pill">Kubernetes</span><span class="pill">Terraform</span><span class="pill">GitHub Actions</span></div></div>
+    </div>
+  </section>
+
+  <section class="wrap section--tight">
+    <div class="cta-band">
+      <div>
+        <h2>Bring us the requirement, not a finished spec.</h2>
+        <p>Send a brief in a few lines. You get a call with the engineers who would build it — architecture options, risks and a milestone plan, before any contract.</p>
+      </div>
+      <div class="btns">
+        <a class="btn btn-spark" href="#/contact" data-link>Start a project</a>
+        <a class="btn btn-ghost" href="#/services" data-link>See services</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==========================================================
+     SERVICES
+     ========================================================== -->
+<div class="page" id="page-services" hidden>
+  <section class="wrap section">
+    <h1>Services</h1>
+    <p class="lede" style="margin-top:22px">Three core practices that ship together. Each one is scoped as a set of milestones with named deliverables — you always know what exists at the end of a payment.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section class="wrap">
+    <article class="svc">
+      <div>
+        <span class="svc-tag">01 / web</span>
+        <h2>Full-stack web engineering</h2>
+        <p class="body-max">SaaS products, enterprise portals and the APIs behind them. We design the data model first, then build back ends that stay predictable when traffic multiplies — connection pooling, queues, caching layers and load tests that prove the numbers before launch day.</p>
+      </div>
+      <ul class="svc-list">
+        <li><b>Multi-tenant SaaS platforms</b><span>billing · RBAC · SSO</span></li>
+        <li><b>Enterprise &amp; partner portals</b><span>SAML · audit logs</span></li>
+        <li><b>Public and internal APIs</b><span>REST · GraphQL · gRPC</span></li>
+        <li><b>High-concurrency back ends</b><span>queues · workers · caching</span></li>
+        <li><b>Legacy rebuilds and migrations</b><span>strangler pattern</span></li>
+      </ul>
+    </article>
+
+    <article class="svc">
+      <div>
+        <span class="svc-tag">02 / mobile</span>
+        <h2>Mobile app development</h2>
+        <p class="body-max">Cross-platform when one codebase serves both stores, native when the app requires targeted performance. Offline-first is the default: field users keep working without signal and sync resolves conflicts when they reconnect.</p>
+      </div>
+      <ul class="svc-list">
+        <li><b>Flutter &amp; React Native builds</b><span>iOS + Android</span></li>
+        <li><b>Native Swift / Kotlin modules</b><span>device integration</span></li>
+        <li><b>Offline-first data sync</b><span>conflict resolution</span></li>
+        <li><b>Release engineering</b><span>TestFlight · Play console</span></li>
+        <li><b>Crash and performance monitoring</b><span>post-launch</span></li>
+      </ul>
+    </article>
+
+    <article class="svc">
+      <div>
+        <span class="svc-tag">03 / cloud</span>
+        <h2>Cloud architecture &amp; DevOps</h2>
+        <p class="body-max">Infrastructure written as code and reviewed like application code. Deploys go out during business hours behind a canary, roll back automatically on error-rate regression, and leave an audit trail. Everything runs in your cloud account under your billing.</p>
+      </div>
+      <ul class="svc-list">
+        <li><b>Zero-downtime CI/CD pipelines</b><span>canary · blue-green</span></li>
+        <li><b>Containerisation &amp; orchestration</b><span>Docker · Kubernetes</span></li>
+        <li><b>Infrastructure as code</b><span>Terraform · Pulumi</span></li>
+        <li><b>AWS / Azure / GCP management</b><span>cost &amp; quota reviews</span></li>
+        <li><b>Observability stack</b><span>metrics · traces · alerts</span></li>
+      </ul>
+    </article>
+  </section>
+
+  <hr class="rule">
+
+  <section class="wrap section">
+    <div class="s-head">
+      <h2>Included in every build</h2>
+      <p>Not upsells. These ship with the work, and each one is something you can check yourself before you accept a milestone.</p>
+    </div>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Deliverable</th><th>What it means in practice</th><th>How you verify it</th></tr></thead>
+        <tbody>
+          <tr><td>Automated testing</td><td>Unit, integration and end-to-end suites covering critical paths, running on every pull request.</td><td>CI run on your repo</td></tr>
+          <tr><td>Documentation</td><td>Architecture decision records, API reference, environment setup and runbooks for on-call.</td><td>docs/ in the repo</td></tr>
+          <tr><td>Security review</td><td>Dependency and secret scanning, authentication and access-control review, OWASP Top 10 pass before launch.</td><td>written findings</td></tr>
+          <tr><td>Production deployment</td><td>Pipelines, infrastructure as code, staging parity, rollback path and a rehearsed release.</td><td>live canary deploy</td></tr>
+          <tr><td>Handover</td><td>Repos, cloud accounts, domains and pipelines transferred to you, with a walkthrough for your team.</td><td>ownership transfer</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="wrap section--tight">
+    <div class="cta-band">
+      <div>
+        <h2>Need a second opinion on an existing build?</h2>
+        <p>We audit architecture, security posture and delivery pipelines as a standalone engagement — findings and a prioritised remediation plan, no obligation to hire us for the fix.</p>
+      </div>
+      <div class="btns"><a class="btn btn-spark" href="#/contact" data-link>Request an audit</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ==========================================================
+     SOLUTIONS
+     ========================================================== -->
+<div class="page" id="page-solutions" hidden>
+  <section class="wrap section">
+    <h1>Solutions by industry</h1>
+    <p class="lede" style="margin-top:22px">Reference architectures we have built before, adapted to your operation rather than sold as a product. Each starts from the constraint that defines the domain.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section class="wrap section">
+    <div class="sol-grid">
+      <article class="sol">
+        <h3>FinTech platforms</h3>
+        <p>Money movement where an incorrect balance is an incident. Ledgers are double-entry and immutable; every state change is reconstructable from the event log.</p>
+        <dl>
+          <dt>Core ledger &amp; payments</dt><dd>Idempotent transaction handling, reconciliation jobs, provider failover.</dd>
+          <dt>Onboarding &amp; KYC</dt><dd>Identity verification flows, sanctions screening, case review queues.</dd>
+          <dt>Risk &amp; controls</dt><dd>Rules engine, full audit trail for compliance and examiners.</dd>
+        </dl>
+        <p class="sol-foot">Typical first release: 14–20 weeks</p>
+      </article>
+
+      <article class="sol">
+        <h3>HealthTech data platforms</h3>
+        <p>Clinical data arrives in formats built decades apart. We normalise it, keep access defensible, and make it useful to clinicians and teams.</p>
+        <dl>
+          <dt>Interoperability</dt><dd>HL7 v2 and FHIR ingestion, terminology mapping, deduplicated patient records.</dd>
+          <dt>Privacy engineering</dt><dd>Field-level encryption, consent enforcement, break-glass access logging.</dd>
+          <dt>Clinical interfaces</dt><dd>Triage and monitoring views designed for speed of read, not visual density.</dd>
+        </dl>
+        <p class="sol-foot">Typical first release: 12–18 weeks</p>
+      </article>
+
+      <article class="sol">
+        <h3>Logistics &amp; supply chain</h3>
+        <p>Plans break the moment an exception occurs. The system has to re-plan continuously and keep teams informed without manual overhead.</p>
+        <dl>
+          <dt>Routing &amp; dispatch</dt><dd>Constraint-based optimisation, live ETA recalculation, driver app with proof of delivery.</dd>
+          <dt>Warehouse operations</dt><dd>Scan-driven picking, stock accuracy checks, ERP and 3PL integrations.</dd>
+          <dt>Control tower</dt><dd>Exception-first dashboards with alerting on SLA breach risk.</dd>
+        </dl>
+        <p class="sol-foot">Typical first release: 12–16 weeks</p>
+      </article>
+
+      <article class="sol">
+        <h3>SaaS &amp; operations portals</h3>
+        <p>Custom software systems built for high reliability, granular permissioning, and zero-downtime scaling.</p>
+        <dl>
+          <dt>Multi-tenant architecture</dt><dd>Isolated tenant data, flexible billing setups, enterprise SSO integrations.</dd>
+          <dt>Data ingestion &amp; reporting</dt><dd>High-throughput data ingestion, warehouse sync, and live operational analytics.</dd>
+          <dt>Granular permissions</dt><dd>Fine-grained RBAC, detailed audit trails, and automated compliance logging.</dd>
+        </dl>
+        <p class="sol-foot">Typical first release: 10–14 weeks</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap section--tight">
+    <div class="cta-band">
+      <div>
+        <h2>Your domain isn't listed?</h2>
+        <p>The architecture patterns transfer. Tell us the workflow, the volumes and the requirements, and we will map it to something we have shipped.</p>
+      </div>
+      <div class="btns"><a class="btn btn-spark" href="#/contact" data-link>Describe your project</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ==========================================================
+     ABOUT
+     ========================================================== -->
+<div class="page" id="page-about" hidden>
+  <section class="wrap section">
+    <h1>How we engineer</h1>
+    <div class="two-col" style="margin-top:44px">
+      <p class="creed">Code shipped to production is the only real metric.</p>
+      <div>
+        <p class="body-max">Demos, decks and 90%-complete branches prove nothing. Trixamid is built around a single measure of progress: working software running in a production environment, under real load, owned by the client. Everything in our process exists to shorten the distance to that point and to keep it stable afterwards.</p>
+        <p class="body-max" style="margin-top:18px">We work as a small senior team. The engineers who scope the system are the ones who build it, and they stay reachable after launch. There is no handover from a sales architect to an offshore delivery pod.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="wrap section">
+    <div class="s-head">
+      <h2>What we guarantee</h2>
+      <p>We don't publish client quotes or star ratings. These commitments are written into the contract instead, where they can be enforced.</p>
+    </div>
+    <div class="guard">
+      <div>
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2.5 20 6v6c0 5-3.4 8.4-8 9.5-4.6-1.1-8-4.5-8-9.5V6z"/></svg>Zero vendor lock-in</h3>
+        <p>No proprietary Trixamid framework, no licence you keep paying for. Open standards, mainstream frameworks, and infrastructure any competent team can pick up.</p>
+      </div>
+      <div>
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 3.5h9a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8.5z"/><path d="M8.5 13h7M8.5 17h5"/></svg>Full IP and repository ownership</h3>
+        <p>Code lives in your organisation from the first commit, not ours. Cloud accounts, domains, registries and pipelines are yours throughout, not transferred at the end.</p>
+      </div>
+      <div>
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Production-grade security</h3>
+        <p>Threat modelling at design time, dependency and secret scanning in CI, least-privilege access by default, and a documented OWASP Top 10 review before any public launch.</p>
+      </div>
+      <div>
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg>Milestone-based delivery</h3>
+        <p>Fixed, dated milestones with defined acceptance criteria. If a date is at risk, you hear it in the weekly review with options — not on the day it slips.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="wrap section">
+    <div class="s-head">
+      <h2>Principles we build to</h2>
+      <p>The decisions that repeat on every project, made once and applied consistently.</p>
+    </div>
+    <div class="two-col">
+      <div>
+        <div class="principle"><h3>Architecture before abstraction</h3><p>Boundaries are drawn around business capabilities, not technical layers. We add a service or a queue when load or ownership demands it, never to look modern on a diagram.</p></div>
+        <div class="principle"><h3>Boring technology wins</h3><p>A Postgres table beats a new datastore for almost everything. We reserve novelty for the part of the system that is genuinely novel.</p></div>
+        <div class="principle"><h3>Readable beats clever</h3><p>Code is written for the engineer who inherits it. Explicit flow, honest naming, comments where the reasoning isn't visible in the code.</p></div>
+      </div>
+      <div>
+        <div class="principle"><h3>Automate the release, not the review</h3><p>Every deploy is scripted and repeatable. Every change is still read by a human before it merges.</p></div>
+        <div class="principle"><h3>Observability is a feature</h3><p>Structured logs, traces and dashboards are part of the definition of done. A system you cannot see into is a system you cannot operate.</p></div>
+        <div class="principle"><h3>Plan for the handover</h3><p>We write documentation as if we leave next month, because a project that only we can run is a liability we sold you.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section--tight">
+    <div class="cta-band">
+      <div>
+        <h2>Talk to the engineers, not an account manager.</h2>
+        <p>The first call is technical. Bring your constraints, your existing stack and the deadline that matters.</p>
+      </div>
+      <div class="btns"><a class="btn btn-spark" href="#/contact" data-link>Book technical consultation</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ==========================================================
+     CONTACT
+     ========================================================== -->
+<div class="page" id="page-contact" hidden>
+  <section class="wrap section">
+    <h1>Start a project</h1>
+    <p class="lede" style="margin-top:22px">Tell us what needs to exist and when. We reply within one business day with either a scoping call slot or an honest note that it isn't our fit.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section class="wrap section">
+    <div class="contact-grid">
+      <div>
+        <form id="briefForm" novalidate>
+          <div class="row-2">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Priya Raman" required />
+              <span class="err">Add your name so we know who we're replying to.</span>
             </div>
+            <div class="field">
+              <label for="email">Business email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="priya@company.com" required />
+              <span class="err">Enter a valid business email address.</span>
+            </div>
+          </div>
+
+          <div class="row-2">
+            <div class="field">
+              <label for="company">Company <span class="opt">(optional)</span></label>
+              <input id="company" name="company" type="text" autocomplete="organization" placeholder="Company name" />
+            </div>
+            <div class="field">
+              <label for="type">Project type</label>
+              <select id="type" name="type" required>
+                <option value="">Select one</option>
+                <option>Web platform</option>
+                <option>Mobile app</option>
+                <option>Cloud &amp; DevOps</option>
+                <option>Full rebuild of an existing system</option>
+                <option>Architecture or security audit</option>
+              </select>
+              <span class="err">Pick the closest match — we'll refine it on the call.</span>
+            </div>
+          </div>
+
+          <div class="row-2">
+            <div class="field">
+              <label for="timeline">Target timeline</label>
+              <select id="timeline" name="timeline" required>
+                <option value="">Select one</option>
+                <option>Starting immediately</option>
+                <option>Within 1–2 months</option>
+                <option>This quarter</option>
+                <option>Planning ahead / budgeting</option>
+              </select>
+              <span class="err">Choose a timeline.</span>
+            </div>
+            <div class="field">
+              <label for="budget">Budget range</label>
+              <select id="budget" name="budget" required>
+                <option value="">Select one</option>
+                <option>Under $25k</option>
+                <option>$25k – $75k</option>
+                <option>$75k – $150k</option>
+                <option>$150k+</option>
+                <option>Not defined yet</option>
+              </select>
+              <span class="err">A range is enough — it shapes the architecture we propose.</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="brief">Project brief</label>
+            <textarea id="brief" name="brief" placeholder="What the system needs to do, who uses it, what exists today, and any fixed deadline or compliance requirement." required></textarea>
+            <span class="err">A few sentences is plenty — we'll ask the rest on the call.</span>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center">
+            <button class="btn btn-spark" type="submit">Send project brief</button>
+            <p class="form-note">Opens in your mail client, addressed to our engineering team. Nothing is stored by this page.</p>
+          </div>
+
+          <div class="sent" id="sent" role="status">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m4 12.5 5 5L20 6.5"/></svg>
+            <div>
+              <p>Brief ready to send.</p>
+              <p>Your mail client should have opened with everything filled in. If it didn't, email the same details to trixamidai@gmail.com.</p>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <aside>
+        <div class="side-card">
+          <h3>Book a call directly</h3>
+          <p>Thirty minutes with an engineer who would work on the build. No sales script.</p>
+          <ul class="slots">
+            <li><span>Weekdays</span><b>09:00 – 18:00 IST</b></li>
+            <li><span>Overlap</span><b>EU &amp; US East</b></li>
+            <li><span>Response</span><b>&lt; 1 business day</b></li>
+          </ul>
+          <a class="mail" href="#/contact" data-link id="calSlot">Open scheduling link →</a>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">Trixa<span>mid</span></div>
-                    <p>We craft digital experiences that blend technical excellence with creative vision to solve tomorrow's challenges today.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-dribbble"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#">Digital Architecture</a></li>
-                        <li><a href="#">Cognitive Systems</a></li>
-                        <li><a href="#">Embedded Intelligence</a></li>
-                        <li><a href="#">Cloud Alchemy</a></li>
-                        <li><a href="#">Product Evolution</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#">Our Philosophy</a></li>
-                        <li><a href="#">Innovation Lab</a></li>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#">Insights</a></li>
-                        <li><a href="#">Case Studies</a></li>
-                        <li><a href="#">Tech Papers</a></li>
-                        <li><a href="#">Events</a></li>
-                        <li><a href="#">Podcast</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 Trixamid - Crafting Digital Excellence</p>
-            </div>
+        <div class="side-card">
+          <h3>Prefer email?</h3>
+          <p>Send the brief straight across, or forward an existing RFP and we will respond against it.</p>
+          <a class="mail" href="mailto:trixamidai@gmail.com">trixamidai@gmail.com</a>
         </div>
-    </footer>
+        <div class="side-card">
+          <h3>Under NDA already?</h3>
+          <p>Send your template and we will sign before the first call. We work under client NDAs as standard on regulated projects.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</div>
 
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // Floating shapes animation
-        const shapes = document.querySelectorAll('.shape');
-        shapes.forEach((shape, index) => {
-            shape.style.animationDelay = `${index * 2}s`;
-        });
-        
-        // Service card hover effect enhancement
-        const serviceCards = document.querySelectorAll('.service-card');
-        serviceCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-15px) rotate(1deg)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) rotate(0)';
-            });
-        });
-        
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const target = document.querySelector(this.getAttribute('href'));
-                
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#/" data-link><span class="mark" aria-hidden="true"></span> Trixamid</a>
+        <p>End-to-end web and mobile engineering built for production. Architecture, delivery and operations from one senior team.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#/services" data-link>Web engineering</a></li>
+          <li><a href="#/services" data-link>Mobile apps</a></li>
+          <li><a href="#/services" data-link>Cloud &amp; DevOps</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="#/solutions" data-link>FinTech</a></li>
+          <li><a href="#/solutions" data-link>HealthTech</a></li>
+          <li><a href="#/solutions" data-link>Logistics</a></li>
+          <li><a href="#/solutions" data-link>SaaS &amp; Portals</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#/about" data-link>How we engineer</a></li>
+          <li><a href="#/about" data-link>Guarantees</a></li>
+          <li><a href="#/contact" data-link>Contact</a></li>
+          <li><a href="mailto:trixamidai@gmail.com">trixamidai@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> Trixamid. All rights reserved.</span>
+      <span>trixamid.com · trixamidai@gmail.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Lifecycle Data */
+const LIFECYCLE = [
+  {
+    label:'Discovery &amp; scoping',
+    meta:'1–2 weeks · fixed fee, credited against the build',
+    title:'Discovery &amp; scoping',
+    body:'We interview the people who will use the system, map the current workflow and the data behind it, and separate what must exist at launch from what can wait. Technical risks get named here while they are still cheap to plan around.',
+    out:['Technical scope with explicit out-of-scope list','Risk register with mitigation owners','Milestone plan with dates and fixed pricing']
+  },
+  {
+    label:'Architecture &amp; UI/UX',
+    meta:'2–3 weeks · runs before the first sprint',
+    title:'System architecture &amp; UI/UX',
+    body:'The data model, service boundaries, authentication approach and deployment topology are decided and written down as architecture decision records, so future engineers can see why — not just what. Interface design runs in parallel against the same flows, ending in a clickable prototype.',
+    out:['Architecture decision records and system diagrams','Normalised data model and API contracts','Clickable UI prototype and component library']
+  },
+  {
+    label:'Agile sprint execution',
+    meta:'2-week sprints · demo at the end of each',
+    title:'Agile sprint execution',
+    body:'Work lands as reviewed pull requests in your repository, sprint by sprint. Every sprint closes with a working build deployed to staging and a demo of what changed — no status document standing in for progress.',
+    out:['Deployed staging build every two weeks','Reviewed PRs with test coverage on critical paths','Burn-up and scope changes reported weekly']
+  },
+  {
+    label:'CI/CD &amp; production launch',
+    meta:'Launch sprint · rehearsed before the real one',
+    title:'Automated CI/CD &amp; production launch',
+    body:'Pipelines build, test, scan and deploy without manual steps. Infrastructure is provisioned from code so staging and production stay identical. We rehearse the release, including the rollback, then go live behind a canary.',
+    out:['Automated pipelines with security scanning','Infrastructure as code for every environment','Rehearsed rollback path and launch runbook']
+  },
+  {
+    label:'Scale &amp; SLA support',
+    meta:'Monthly · cancel with 30 days notice',
+    title:'Scale &amp; SLA support',
+    body:'After launch we monitor, patch and tune. Alerts route to an on-call engineer with a defined response time, dependency updates ship on a schedule, and capacity is reviewed against actual growth so cost tracks usage instead of guesswork.',
+    out:['Defined response and resolution targets','Monthly performance, cost and security review','Capacity planning ahead of known traffic peaks']
+  }
+];
+
+/* Render lifecycle */
+const stepsEl = document.getElementById('steps');
+const stagesEl = document.getElementById('stages');
+
+LIFECYCLE.forEach((s,i)=>{
+  const li = document.createElement('li');
+  li.className = 'step';
+  li.setAttribute('role','presentation');
+  li.setAttribute('aria-selected', i===0 ? 'true' : 'false');
+  li.innerHTML = '<button role="tab" id="tab-'+i+'" aria-controls="stage-'+i+'" aria-selected="'+(i===0)+'" tabindex="'+(i===0?0:-1)+'">'+
+    '<span class="num">'+(i+1)+'</span><span class="label">'+s.label+'</span></button>';
+  stepsEl.appendChild(li);
+
+  const st = document.createElement('div');
+  st.className = 'stage';
+  st.id = 'stage-'+i;
+  st.setAttribute('role','tabpanel');
+  st.setAttribute('aria-labelledby','tab-'+i);
+  if(i!==0) st.hidden = true;
+  st.innerHTML = '<h3>'+s.title+'</h3><p class="meta">'+s.meta+'</p><p>'+s.body+'</p>'+
+    '<div class="stage-out"><h4>What you have at the end of this stage</h4><ul>'+
+    s.out.map(o=>'<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m4 12.5 5 5L20 6.5"/></svg><span>'+o+'</span></li>').join('')+
+    '</ul></div>';
+  stagesEl.appendChild(st);
+});
+
+function selectStage(i){
+  [...stepsEl.children].forEach((li,n)=>{
+    const on = n===i;
+    li.setAttribute('aria-selected', on);
+    const b = li.querySelector('button');
+    b.setAttribute('aria-selected', on);
+    b.tabIndex = on ? 0 : -1;
+    document.getElementById('stage-'+n).hidden = !on;
+  });
+}
+stepsEl.addEventListener('click', e=>{
+  const b = e.target.closest('button');
+  if(!b) return;
+  selectStage([...stepsEl.children].indexOf(b.parentElement));
+});
+stepsEl.addEventListener('keydown', e=>{
+  if(!['ArrowDown','ArrowUp','Home','End'].includes(e.key)) return;
+  e.preventDefault();
+  const cur = [...stepsEl.children].findIndex(li=>li.getAttribute('aria-selected')==='true');
+  let next = cur;
+  if(e.key==='ArrowDown') next = (cur+1)%LIFECYCLE.length;
+  if(e.key==='ArrowUp') next = (cur-1+LIFECYCLE.length)%LIFECYCLE.length;
+  if(e.key==='Home') next = 0;
+  if(e.key==='End') next = LIFECYCLE.length-1;
+  selectStage(next);
+  stepsEl.children[next].querySelector('button').focus();
+});
+
+/* Router */
+const ROUTES = {'/':'home','/services':'services','/solutions':'solutions','/about':'about','/contact':'contact'};
+const TITLES = {
+  home:'Trixamid — End-to-end web & mobile engineering built for production',
+  services:'Services — Trixamid',
+  solutions:'Solutions by industry — Trixamid',
+  about:'How we engineer — Trixamid',
+  contact:'Start a project — Trixamid'
+};
+
+function route(){
+  const path = (location.hash.replace(/^#/,'') || '/').split('?')[0];
+  const page = ROUTES[path] || 'home';
+  document.querySelectorAll('.page').forEach(p=>{ p.hidden = p.id !== 'page-'+page; });
+  document.querySelectorAll('.nav a[data-link]').forEach(a=>{
+    const target = a.getAttribute('href').replace(/^#/,'');
+    if(!a.classList.contains('btn')){
+      if(target === path) a.setAttribute('aria-current','page');
+      else a.removeAttribute('aria-current');
+    }
+  });
+  document.title = TITLES[page];
+  document.getElementById('nav').classList.remove('open');
+  document.getElementById('menuBtn').setAttribute('aria-expanded','false');
+  window.scrollTo(0,0);
+  if(page==='home') runDeploy();
+}
+window.addEventListener('hashchange', route);
+
+/* Deploy panel animation */
+let deployRan = false;
+function runDeploy(){
+  const lines = document.querySelectorAll('.dline');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){ lines.forEach(l=>l.classList.add('in')); return; }
+  if(deployRan){ lines.forEach(l=>l.classList.add('in')); return; }
+  deployRan = true;
+  lines.forEach((l,i)=> setTimeout(()=>l.classList.add('in'), 320 + i*380));
+}
+
+/* Menu, form, interactions */
+document.getElementById('menuBtn').addEventListener('click', function(){
+  const nav = document.getElementById('nav');
+  const open = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', String(open));
+});
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+const form = document.getElementById('briefForm');
+form.addEventListener('submit', e=>{
+  e.preventDefault();
+  let firstBad = null;
+  form.querySelectorAll('input,select,textarea').forEach(el=>{
+    const field = el.closest('.field');
+    if(!field) return;
+    const bad = el.hasAttribute('required') && !el.checkValidity();
+    field.classList.toggle('invalid', bad);
+    if(bad && !firstBad) firstBad = el;
+  });
+  if(firstBad){ firstBad.focus(); return; }
+
+  const v = id => document.getElementById(id).value.trim();
+  const body =
+    'Name: '+v('name')+'\n'+
+    'Email: '+v('email')+'\n'+
+    'Company: '+(v('company')||'—')+'\n'+
+    'Project type: '+v('type')+'\n'+
+    'Timeline: '+v('timeline')+'\n'+
+    'Budget: '+v('budget')+'\n\n'+
+    'Brief:\n'+v('brief');
+  const href = 'mailto:trixamidai@gmail.com?subject='+
+    encodeURIComponent('Project brief — '+(v('company')||v('name')))+
+    '&body='+encodeURIComponent(body);
+  document.getElementById('sent').classList.add('show');
+  window.location.href = href;
+});
+form.querySelectorAll('input,select,textarea').forEach(el=>{
+  el.addEventListener('input', ()=>{
+    const f = el.closest('.field');
+    if(f && f.classList.contains('invalid') && el.checkValidity()) f.classList.remove('invalid');
+  });
+});
+
+document.getElementById('calSlot').addEventListener('click', e=>{
+  e.preventDefault();
+  alert('Scheduling placeholder — connect your booking link here.');
+});
+
+document.getElementById('fav').href =
+  getComputedStyle(document.documentElement).getPropertyValue('--mark').trim().slice(4,-1).replace(/['"]/g,'');
+
+route();
+</script>
 </body>
 </html>
